@@ -1,0 +1,2047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HRViabilityPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AuditLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar(max)" />
+          <Property Name="ActivityPerformed" Type="varchar(max)" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="DateOfActivity" Type="datetime" />
+          <Property Name="IpAddress" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="BaiMuajjalDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BaiMuajjalFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BaiMuajjalGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BMDetails">
+          <Key>
+            <PropertyRef Name="staffId" />
+          </Key>
+          <Property Name="staffId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="staffName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="branchName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="branchCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailAddress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BranchDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BranchFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BranchGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="EmailAccount">
+          <Key>
+            <PropertyRef Name="emailID" />
+          </Key>
+          <Property Name="emailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emailName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="emailGateway" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailUserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="emailStatus" Type="int" Nullable="false" />
+          <Property Name="emailINTBK" Type="int" />
+        </EntityType>
+        <EntityType Name="EmailBox">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="EmailContent" Type="varchar(max)" />
+          <Property Name="HasAttachment" Type="int" />
+          <Property Name="Attachment" Type="varchar" MaxLength="50" />
+          <Property Name="EmailStatus" Type="varchar" MaxLength="5" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="Platform" Type="varchar" MaxLength="50" />
+          <Property Name="FromAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="facilityName" Type="varchar(max)" Nullable="false" />
+          <Property Name="confirmedStaff" Type="varchar" MaxLength="3" />
+          <Property Name="unconfirmedStaff" Type="varchar" MaxLength="3" />
+          <Property Name="permanentStaff" Type="varchar" MaxLength="3" />
+          <Property Name="contractStaff" Type="varchar" MaxLength="3" />
+          <Property Name="expectedLengthOfService" Type="int" />
+          <Property Name="percentageRate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="staffBranchPercentageRate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="minimumAnnualGrossAllowance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="minimumAnnualHousingAllowance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="maximumAmountLimit" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="totalDeductionFromSalary" Type="varchar" MaxLength="10" />
+          <Property Name="minimumTenor" Type="int" />
+          <Property Name="maximumTenor" Type="int" />
+          <Property Name="undertakingFormNeeded" Type="varchar" MaxLength="3" />
+          <Property Name="supervisorEndorsementNeeded" Type="varchar" MaxLength="3" />
+          <Property Name="searchAuthorityNeeded" Type="varchar" MaxLength="3" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+          <Property Name="facilityComments" Type="varchar(max)" />
+          <Property Name="document1" Type="varchar(max)" />
+          <Property Name="document2" Type="varchar(max)" />
+          <Property Name="document3" Type="varchar(max)" />
+          <Property Name="document4" Type="varchar(max)" />
+          <Property Name="document5" Type="varchar(max)" />
+          <Property Name="document6" Type="varchar(max)" />
+          <Property Name="document7" Type="varchar(max)" />
+          <Property Name="document8" Type="varchar(max)" />
+          <Property Name="document9" Type="varchar(max)" />
+          <Property Name="document10" Type="varchar(max)" />
+          <Property Name="form1" Type="varchar(max)" />
+          <Property Name="form2" Type="varchar(max)" />
+          <Property Name="form3" Type="varchar(max)" />
+          <Property Name="form4" Type="varchar(max)" />
+          <Property Name="form5" Type="varchar(max)" />
+          <Property Name="form6" Type="varchar(max)" />
+          <Property Name="form7" Type="varchar(max)" />
+          <Property Name="form8" Type="varchar(max)" />
+          <Property Name="form9" Type="varchar(max)" />
+          <Property Name="form10" Type="varchar(max)" />
+          <Property Name="facilityRulesComments" Type="varchar(max)" />
+          <Property Name="facilityRulesSet" Type="varchar" MaxLength="1" />
+          <Property Name="maximumAmountLimitOption" Type="varchar(max)" />
+          <Property Name="mdApproval" Type="varchar" MaxLength="3" />
+          <Property Name="downPaymentRequired" Type="varchar" MaxLength="3" />
+          <Property Name="dhApproval" Type="varchar" MaxLength="3" />
+          <Property Name="customField1" Type="varchar(max)" />
+          <Property Name="customField2" Type="varchar(max)" />
+          <Property Name="customField3" Type="varchar(max)" />
+          <Property Name="customField4" Type="varchar(max)" />
+          <Property Name="customField5" Type="varchar(max)" />
+          <Property Name="customField6" Type="varchar(max)" />
+          <Property Name="customField7" Type="varchar(max)" />
+          <Property Name="customField8" Type="varchar(max)" />
+          <Property Name="customField9" Type="varchar(max)" />
+          <Property Name="customField10" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FacilityDocuments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FacilityForms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FacilityUndertaking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="undertakingType" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="varchar" MaxLength="3" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="HomeFinance18PercentDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HomeFinance18PercentFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HomeFinance18PercentGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HomeFinanceDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HomeFinanceFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HomeFinanceGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HRBranchesMaster">
+          <Key>
+            <PropertyRef Name="BranchCode" />
+          </Key>
+          <Property Name="BranchCode" Type="int" Nullable="false" />
+          <Property Name="BranchName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="HRFacilityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="requestReferenceNumber" Type="varchar(max)" Nullable="false" />
+          <Property Name="staffId" Type="varchar" MaxLength="50" />
+          <Property Name="accountNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cif" Type="int" />
+          <Property Name="accountName" Type="varchar(max)" Nullable="false" />
+          <Property Name="facilityName" Type="varchar(max)" />
+          <Property Name="salaryGrade" Type="varchar(max)" />
+          <Property Name="mobileNumber" Type="varchar" MaxLength="11" />
+          <Property Name="maritalStatus" Type="varchar" MaxLength="50" />
+          <Property Name="dateOfBirth" Type="varchar" MaxLength="50" />
+          <Property Name="staffEmailAddress" Type="varchar(max)" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="natureOfEmployment" Type="varchar(max)" Nullable="false" />
+          <Property Name="numberOfMonthsInService" Type="int" />
+          <Property Name="jobFunction" Type="varchar(max)" />
+          <Property Name="branch" Type="varchar(max)" />
+          <Property Name="branchCode" Type="varchar" MaxLength="50" />
+          <Property Name="department" Type="varchar(max)" />
+          <Property Name="grossAnnualSalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="netMonthlySalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="annualHousingAllowance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="outstandingLoanAmount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="noOfMonthsRemainingOnfacility" Type="int" />
+          <Property Name="amountRequested" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="downPaymentContribution" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="repaymentAmount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="percentageRate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="tenor" Type="int" Nullable="false" />
+          <Property Name="loanPurpose" Type="varchar(max)" Nullable="false" />
+          <Property Name="assetDescription" Type="varchar(max)" />
+          <Property Name="vendorsName" Type="varchar(max)" />
+          <Property Name="vendorsAddress" Type="varchar(max)" />
+          <Property Name="vendorsPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="locationOfAsset" Type="varchar(max)" />
+          <Property Name="vehicleModel" Type="varchar(max)" />
+          <Property Name="yearOfManufacture" Type="varchar(max)" />
+          <Property Name="modeOfDelivery" Type="varchar(max)" />
+          <Property Name="quotationEnclosed" Type="varchar(max)" />
+          <Property Name="typeOfProperty" Type="varchar" MaxLength="50" />
+          <Property Name="propertyDescription" Type="varchar(max)" />
+          <Property Name="titleDocumentType" Type="varchar(max)" />
+          <Property Name="nameOfDeveloper" Type="varchar(max)" />
+          <Property Name="addressOfDeveloper" Type="varchar(max)" />
+          <Property Name="phoneNumberOfDeveloper" Type="varchar" MaxLength="50" />
+          <Property Name="locationOfProperty" Type="varchar(max)" />
+          <Property Name="serviceDescription" Type="varchar(max)" />
+          <Property Name="serviceProviderName" Type="varchar(max)" />
+          <Property Name="serviceProviderAddress" Type="varchar(max)" />
+          <Property Name="servicePhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="requestDate" Type="datetime" />
+          <Property Name="requestStatus" Type="varchar" MaxLength="50" />
+          <Property Name="initiator" Type="varchar(max)" />
+          <Property Name="initiatorTimestamp" Type="datetime" />
+          <Property Name="staffSupervisor" Type="varchar" MaxLength="50" />
+          <Property Name="hrApprover1" Type="varchar(max)" />
+          <Property Name="hrApprover1ApproveReject" Type="varchar(max)" />
+          <Property Name="hrApprover1Comment" Type="varchar(max)" />
+          <Property Name="hrApprover1Timestamp" Type="datetime" />
+          <Property Name="hrApprover2" Type="varchar(max)" />
+          <Property Name="hrApprover2Timestamp" Type="datetime" />
+          <Property Name="hrApprover2ApproveReject" Type="varchar(max)" />
+          <Property Name="hrApprover2Comment" Type="varchar(max)" />
+          <Property Name="bmBranchOfRequest" Type="varchar(max)" />
+          <Property Name="bmBranchOfRequestTimestamp" Type="datetime" />
+          <Property Name="bmBranchOfRequestApproveReject" Type="varchar(max)" />
+          <Property Name="bmBranchOfRequestComment" Type="varchar(max)" />
+          <Property Name="mdApprover" Type="varchar(max)" />
+          <Property Name="mdApproverTimestamp" Type="datetime" />
+          <Property Name="mdApproverApproveReject" Type="varchar(max)" />
+          <Property Name="mdApproverComment" Type="varchar(max)" />
+          <Property Name="fileName1" Type="varchar(max)" />
+          <Property Name="fileContentType1" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData1" Type="nvarchar(max)" />
+          <Property Name="fileName2" Type="varchar(max)" />
+          <Property Name="fileContentType2" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData2" Type="nvarchar(max)" />
+          <Property Name="fileName3" Type="varchar(max)" />
+          <Property Name="fileContentType3" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData3" Type="nvarchar(max)" />
+          <Property Name="fileName4" Type="varchar(max)" />
+          <Property Name="fileContentType4" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData4" Type="nvarchar(max)" />
+          <Property Name="fileName5" Type="varchar(max)" />
+          <Property Name="fileContentType5" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData5" Type="nvarchar(max)" />
+          <Property Name="fileName6" Type="varchar(max)" />
+          <Property Name="fileContentType6" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData6" Type="nvarchar(max)" />
+          <Property Name="hrApprover1RejectComment" Type="varchar(max)" />
+          <Property Name="hrApprover2RejectComment" Type="varchar(max)" />
+          <Property Name="mdApproverRejectComment" Type="varchar(max)" />
+          <Property Name="bmApproverRejectComment" Type="varchar(max)" />
+          <Property Name="dhApproverRejectComment" Type="varchar(max)" />
+          <Property Name="dhApprover" Type="varchar(max)" />
+          <Property Name="dhApproverTimestamp" Type="datetime" />
+          <Property Name="dhApproverApproveReject" Type="varchar" MaxLength="50" />
+          <Property Name="dhApproverComment" Type="varchar(max)" />
+          <Property Name="hasExistingVehicleLoan" Type="varchar" MaxLength="3" />
+          <Property Name="hasExistingMortgageLoan" Type="varchar" MaxLength="3" />
+          <Property Name="dateOfEmployment" Type="varchar" MaxLength="50" />
+          <Property Name="customField1" Type="varchar(max)" />
+          <Property Name="customField1Data" Type="varchar(max)" />
+          <Property Name="customField2" Type="varchar(max)" />
+          <Property Name="customField2Data" Type="varchar(max)" />
+          <Property Name="customField3" Type="varchar(max)" />
+          <Property Name="customField3Data" Type="varchar(max)" />
+          <Property Name="customField4" Type="varchar(max)" />
+          <Property Name="customField4Data" Type="varchar(max)" />
+          <Property Name="customField5" Type="varchar(max)" />
+          <Property Name="customField5Data" Type="varchar(max)" />
+          <Property Name="customField6" Type="varchar(max)" />
+          <Property Name="customField6Data" Type="varchar(max)" />
+          <Property Name="customField7" Type="varchar(max)" />
+          <Property Name="customField7Data" Type="varchar(max)" />
+          <Property Name="customField8" Type="varchar(max)" />
+          <Property Name="customField8Data" Type="varchar(max)" />
+          <Property Name="customField9" Type="varchar(max)" />
+          <Property Name="customField9Data" Type="varchar(max)" />
+          <Property Name="customField10" Type="varchar(max)" />
+          <Property Name="customField10Data" Type="varchar(max)" />
+          <Property Name="queueId" Type="int" />
+          <Property Name="fileName7" Type="varchar(max)" />
+          <Property Name="fileContentType7" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData7" Type="nvarchar(max)" />
+          <Property Name="fileName8" Type="varchar(max)" />
+          <Property Name="fileContentType8" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData8" Type="varchar(max)" />
+          <Property Name="fileName9" Type="varchar(max)" />
+          <Property Name="fileContentType9" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData9" Type="varchar(max)" />
+          <Property Name="fileName10" Type="varchar(max)" />
+          <Property Name="fileContentType10" Type="nvarchar" MaxLength="200" />
+          <Property Name="fileData10" Type="varchar(max)" />
+          <Property Name="documentEmailStatus" Type="varchar(max)" />
+          <Property Name="documentEmailSentTime" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="HRPayroll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GradeName" Type="varchar(max)" />
+          <Property Name="AnnualGrossPackage" Type="varchar(max)" />
+          <Property Name="AnnualHousingAllowance" Type="varchar(max)" />
+          <Property Name="MonthlyGrossPackage" Type="varchar(max)" />
+          <Property Name="MonthlyNetPackage" Type="varchar(max)" />
+          <Property Name="PensionsContribution" Type="varchar(max)" />
+          <Property Name="PAYE" Type="varchar(max)" />
+          <Property Name="NHF" Type="varchar(max)" />
+          <Property Name="TotalAnnualDeduction" Type="varchar(max)" />
+          <Property Name="TotalMonthlyDeduction" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="IjaraServiceDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="IjaraServiceFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="IjaraServiceGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Murabaha18PercentDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Murabaha18PercentFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Murabaha18PercentGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Murabaha5PercentDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Murabaha5PercentFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Murabaha5PercentGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MurabahaDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MurabahaFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MurabahaGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ReqHistory">
+          <Key>
+            <PropertyRef Name="sn" />
+          </Key>
+          <Property Name="sn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReqId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Initiator" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActionPerformed" Type="nvarchar" MaxLength="500" />
+          <Property Name="ActionDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StaffGradesAllowances">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="gradeLevelCode" Type="int" Nullable="false" />
+          <Property Name="abjLagPhcBranchesHousing" Type="varchar(max)" Nullable="false" />
+          <Property Name="otherBranchesHousing" Type="varchar(max)" Nullable="false" />
+          <Property Name="abjLagPhcBranchesAnnualGross" Type="varchar(max)" Nullable="false" />
+          <Property Name="otherBranchesAnnualGrosss" Type="varchar(max)" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="3" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="StaffGradesSalary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gradeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="netMonthlySalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="grossAnnualSalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="annualHousingAllowance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="active" Type="varchar" MaxLength="3" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <Function Name="SELECT_REPORT_TRANS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="requestReference" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="HRViabilityPortalModelStoreContainer">
+          <EntitySet Name="AuditLogs" EntityType="Self.AuditLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaiMuajjalDocumentsTable" EntityType="Self.BaiMuajjalDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaiMuajjalFormsTable" EntityType="Self.BaiMuajjalFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaiMuajjalGradesTable" EntityType="Self.BaiMuajjalGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BMDetails" EntityType="Self.BMDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchDocumentsTable" EntityType="Self.BranchDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchFormsTable" EntityType="Self.BranchFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchGradesTable" EntityType="Self.BranchGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailAccount" EntityType="Self.EmailAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailBox" EntityType="Self.EmailBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facility" EntityType="Self.Facility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityDocuments" EntityType="Self.FacilityDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityForms" EntityType="Self.FacilityForms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityUndertaking" EntityType="Self.FacilityUndertaking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFinance18PercentDocumentsTable" EntityType="Self.HomeFinance18PercentDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFinance18PercentFormsTable" EntityType="Self.HomeFinance18PercentFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFinance18PercentGradesTable" EntityType="Self.HomeFinance18PercentGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFinanceDocumentsTable" EntityType="Self.HomeFinanceDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFinanceFormsTable" EntityType="Self.HomeFinanceFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFinanceGradesTable" EntityType="Self.HomeFinanceGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HRBranchesMaster" EntityType="Self.HRBranchesMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HRFacilityMaster" EntityType="Self.HRFacilityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HRPayroll" EntityType="Self.HRPayroll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IjaraServiceDocumentsTable" EntityType="Self.IjaraServiceDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IjaraServiceFormsTable" EntityType="Self.IjaraServiceFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IjaraServiceGradesTable" EntityType="Self.IjaraServiceGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Murabaha18PercentDocumentsTable" EntityType="Self.Murabaha18PercentDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Murabaha18PercentFormsTable" EntityType="Self.Murabaha18PercentFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Murabaha18PercentGradesTable" EntityType="Self.Murabaha18PercentGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Murabaha5PercentDocumentsTable" EntityType="Self.Murabaha5PercentDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Murabaha5PercentFormsTable" EntityType="Self.Murabaha5PercentFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Murabaha5PercentGradesTable" EntityType="Self.Murabaha5PercentGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MurabahaDocumentsTable" EntityType="Self.MurabahaDocumentsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MurabahaFormsTable" EntityType="Self.MurabahaFormsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MurabahaGradesTable" EntityType="Self.MurabahaGradesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReqHistory" EntityType="Self.ReqHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffGradesAllowances" EntityType="Self.StaffGradesAllowances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffGradesSalary" EntityType="Self.StaffGradesSalary" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRViabilityPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AuditLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityPerformed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfActivity" Type="DateTime" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BaiMuajjalDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BaiMuajjalFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BaiMuajjalGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BMDetail">
+          <Key>
+            <PropertyRef Name="staffId" />
+          </Key>
+          <Property Name="staffId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="staffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="branchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="branchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BranchDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BranchFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BranchGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmailAccount">
+          <Key>
+            <PropertyRef Name="emailID" />
+          </Key>
+          <Property Name="emailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emailPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emailGateway" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emailUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emailStatus" Type="Int32" Nullable="false" />
+          <Property Name="emailINTBK" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmailBox">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HasAttachment" Type="Int32" />
+          <Property Name="Attachment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailStatus" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="Platform" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FromAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="facilityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="confirmedStaff" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="unconfirmedStaff" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="permanentStaff" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="contractStaff" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="expectedLengthOfService" Type="Int32" />
+          <Property Name="percentageRate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="staffBranchPercentageRate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="minimumAnnualGrossAllowance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="minimumAnnualHousingAllowance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="maximumAmountLimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalDeductionFromSalary" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="minimumTenor" Type="Int32" />
+          <Property Name="maximumTenor" Type="Int32" />
+          <Property Name="undertakingFormNeeded" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="supervisorEndorsementNeeded" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="searchAuthorityNeeded" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="facilityComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="document10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="form10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="facilityRulesComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="facilityRulesSet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="maximumAmountLimitOption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mdApproval" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="downPaymentRequired" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="dhApproval" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="customField1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FacilityDocument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FacilityForm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FacilityUndertaking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="undertakingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HomeFinanceDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HomeFinanceFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HomeFinanceGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HRBranchesMaster">
+          <Key>
+            <PropertyRef Name="BranchCode" />
+          </Key>
+          <Property Name="BranchCode" Type="Int32" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HRFacilityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="requestReferenceNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="staffId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="accountNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cif" Type="Int32" />
+          <Property Name="accountName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="facilityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="salaryGrade" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="maritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="staffEmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="natureOfEmployment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numberOfMonthsInService" Type="Int32" />
+          <Property Name="jobFunction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="branch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="branchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="grossAnnualSalary" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="netMonthlySalary" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="annualHousingAllowance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="outstandingLoanAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="noOfMonthsRemainingOnfacility" Type="Int32" />
+          <Property Name="amountRequested" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="downPaymentContribution" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="repaymentAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="percentageRate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="tenor" Type="Int32" Nullable="false" />
+          <Property Name="loanPurpose" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="assetDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vendorsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vendorsAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vendorsPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="locationOfAsset" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vehicleModel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="yearOfManufacture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="modeOfDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="quotationEnclosed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="typeOfProperty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="propertyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="titleDocumentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nameOfDeveloper" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="addressOfDeveloper" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="phoneNumberOfDeveloper" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="locationOfProperty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serviceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serviceProviderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serviceProviderAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="servicePhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="requestDate" Type="DateTime" Precision="3" />
+          <Property Name="requestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="initiator" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="initiatorTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="staffSupervisor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover1ApproveReject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover1Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover1Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="hrApprover2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover2Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="hrApprover2ApproveReject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover2Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bmBranchOfRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bmBranchOfRequestTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="bmBranchOfRequestApproveReject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bmBranchOfRequestComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mdApprover" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mdApproverTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="mdApproverApproveReject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mdApproverComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileName1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileName2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileName3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileName4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileName5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileName6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType6" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hrApprover1RejectComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hrApprover2RejectComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mdApproverRejectComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bmApproverRejectComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dhApproverRejectComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dhApprover" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dhApproverTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="dhApproverApproveReject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dhApproverComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hasExistingVehicleLoan" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="hasExistingMortgageLoan" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfEmployment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="customField1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField1Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField2Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField3Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField4Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField5Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField6Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField7Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField8Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField9Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="customField10Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="queueId" Type="Int32" />
+          <Property Name="fileName7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType7" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData7" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileName8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType8" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData8" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileName9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType9" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData9" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileName10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fileContentType10" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fileData10" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="documentEmailStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="documentEmailSentTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HRPayroll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AnnualGrossPackage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AnnualHousingAllowance" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyGrossPackage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyNetPackage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PensionsContribution" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PAYE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NHF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAnnualDeduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalMonthlyDeduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IjaraServiceDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IjaraServiceFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IjaraServiceGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MurabahaDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MurabahaFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MurabahaGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ReqHistory">
+          <Key>
+            <PropertyRef Name="sn" />
+          </Key>
+          <Property Name="sn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReqId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Initiator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActionPerformed" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ActionDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="HRViabilityPortalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuditLogs" EntityType="Self.AuditLog" />
+          <EntitySet Name="BaiMuajjalDocumentsTables" EntityType="Self.BaiMuajjalDocumentsTable" />
+          <EntitySet Name="BaiMuajjalFormsTables" EntityType="Self.BaiMuajjalFormsTable" />
+          <EntitySet Name="BaiMuajjalGradesTables" EntityType="Self.BaiMuajjalGradesTable" />
+          <EntitySet Name="BMDetails" EntityType="Self.BMDetail" />
+          <EntitySet Name="BranchDocumentsTables" EntityType="Self.BranchDocumentsTable" />
+          <EntitySet Name="BranchFormsTables" EntityType="Self.BranchFormsTable" />
+          <EntitySet Name="BranchGradesTables" EntityType="Self.BranchGradesTable" />
+          <EntitySet Name="EmailAccounts" EntityType="Self.EmailAccount" />
+          <EntitySet Name="EmailBoxes" EntityType="Self.EmailBox" />
+          <EntitySet Name="Facilities" EntityType="Self.Facility" />
+          <EntitySet Name="FacilityDocuments" EntityType="Self.FacilityDocument" />
+          <EntitySet Name="FacilityForms" EntityType="Self.FacilityForm" />
+          <EntitySet Name="FacilityUndertakings" EntityType="Self.FacilityUndertaking" />
+          <EntitySet Name="HomeFinanceDocumentsTables" EntityType="Self.HomeFinanceDocumentsTable" />
+          <EntitySet Name="HomeFinanceFormsTables" EntityType="Self.HomeFinanceFormsTable" />
+          <EntitySet Name="HomeFinanceGradesTables" EntityType="Self.HomeFinanceGradesTable" />
+          <EntitySet Name="HRBranchesMasters" EntityType="Self.HRBranchesMaster" />
+          <EntitySet Name="HRFacilityMasters" EntityType="Self.HRFacilityMaster" />
+          <EntitySet Name="HRPayrolls" EntityType="Self.HRPayroll" />
+          <EntitySet Name="IjaraServiceDocumentsTables" EntityType="Self.IjaraServiceDocumentsTable" />
+          <EntitySet Name="IjaraServiceFormsTables" EntityType="Self.IjaraServiceFormsTable" />
+          <EntitySet Name="IjaraServiceGradesTables" EntityType="Self.IjaraServiceGradesTable" />
+          <EntitySet Name="MurabahaDocumentsTables" EntityType="Self.MurabahaDocumentsTable" />
+          <EntitySet Name="MurabahaFormsTables" EntityType="Self.MurabahaFormsTable" />
+          <EntitySet Name="MurabahaGradesTables" EntityType="Self.MurabahaGradesTable" />
+          <EntitySet Name="ReqHistories" EntityType="Self.ReqHistory" />
+          <EntitySet Name="StaffGradesSalaries" EntityType="HRViabilityPortalModel.StaffGradesSalary" />
+          <EntitySet Name="StaffGradesAllowances" EntityType="HRViabilityPortalModel.StaffGradesAllowance" />
+          <EntitySet Name="HomeFinance18PercentDocumentsTable" EntityType="HRViabilityPortalModel.HomeFinance18PercentDocumentsTable" />
+          <EntitySet Name="HomeFinance18PercentFormsTable" EntityType="HRViabilityPortalModel.HomeFinance18PercentFormsTable" />
+          <EntitySet Name="HomeFinance18PercentGradesTable" EntityType="HRViabilityPortalModel.HomeFinance18PercentGradesTable" />
+          <EntitySet Name="Murabaha18PercentDocumentsTable" EntityType="HRViabilityPortalModel.Murabaha18PercentDocumentsTable" />
+          <EntitySet Name="Murabaha18PercentFormsTable" EntityType="HRViabilityPortalModel.Murabaha18PercentFormsTable" />
+          <EntitySet Name="Murabaha18PercentGradesTable" EntityType="HRViabilityPortalModel.Murabaha18PercentGradesTable" />
+          <EntitySet Name="Murabaha5PercentDocumentsTable" EntityType="HRViabilityPortalModel.Murabaha5PercentDocumentsTable" />
+          <EntitySet Name="Murabaha5PercentFormsTable" EntityType="HRViabilityPortalModel.Murabaha5PercentFormsTable" />
+          <EntitySet Name="Murabaha5PercentGradesTable" EntityType="HRViabilityPortalModel.Murabaha5PercentGradesTable" />
+          <FunctionImport Name="SELECT_REPORT_TRANS" ReturnType="Collection(HRViabilityPortalModel.SELECT_REPORT_TRANS_Result)">
+            <Parameter Name="requestReference" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="StaffGradesSalary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="netMonthlySalary" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="grossAnnualSalary" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="annualHousingAllowance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="active" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StaffGradesAllowance">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gradeLevelCode" Type="Int32" Nullable="false" />
+          <Property Name="abjLagPhcBranchesHousing" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="otherBranchesHousing" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="abjLagPhcBranchesAnnualGross" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="otherBranchesAnnualGrosss" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HomeFinance18PercentDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HomeFinance18PercentFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HomeFinance18PercentGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Murabaha18PercentDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Murabaha18PercentFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Murabaha18PercentGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Murabaha5PercentDocumentsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Murabaha5PercentFormsTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Murabaha5PercentGradesTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gradeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SELECT_REPORT_TRANS_Result">
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="requestReferenceNumber" Nullable="false" />
+          <Property Type="String" Name="staffId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="accountNumber" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="cif" Nullable="true" />
+          <Property Type="String" Name="accountName" Nullable="false" />
+          <Property Type="String" Name="facilityName" Nullable="true" />
+          <Property Type="String" Name="salaryGrade" Nullable="true" />
+          <Property Type="String" Name="mobileNumber" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="maritalStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="dateOfBirth" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="staffEmailAddress" Nullable="true" />
+          <Property Type="String" Name="state" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="natureOfEmployment" Nullable="false" />
+          <Property Type="Int32" Name="numberOfMonthsInService" Nullable="true" />
+          <Property Type="String" Name="jobFunction" Nullable="true" />
+          <Property Type="String" Name="branch" Nullable="true" />
+          <Property Type="String" Name="branchCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="department" Nullable="true" />
+          <Property Type="Decimal" Name="grossAnnualSalary" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="netMonthlySalary" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="annualHousingAllowance" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="outstandingLoanAmount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="noOfMonthsRemainingOnfacility" Nullable="true" />
+          <Property Type="Decimal" Name="amountRequested" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="downPaymentContribution" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="repaymentAmount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="percentageRate" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="tenor" Nullable="false" />
+          <Property Type="String" Name="loanPurpose" Nullable="false" />
+          <Property Type="String" Name="assetDescription" Nullable="true" />
+          <Property Type="String" Name="vendorsName" Nullable="true" />
+          <Property Type="String" Name="vendorsAddress" Nullable="true" />
+          <Property Type="String" Name="vendorsPhoneNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="locationOfAsset" Nullable="true" />
+          <Property Type="String" Name="vehicleModel" Nullable="true" />
+          <Property Type="String" Name="yearOfManufacture" Nullable="true" />
+          <Property Type="String" Name="modeOfDelivery" Nullable="true" />
+          <Property Type="String" Name="quotationEnclosed" Nullable="true" />
+          <Property Type="String" Name="typeOfProperty" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="propertyDescription" Nullable="true" />
+          <Property Type="String" Name="titleDocumentType" Nullable="true" />
+          <Property Type="String" Name="nameOfDeveloper" Nullable="true" />
+          <Property Type="String" Name="addressOfDeveloper" Nullable="true" />
+          <Property Type="String" Name="phoneNumberOfDeveloper" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="locationOfProperty" Nullable="true" />
+          <Property Type="String" Name="serviceDescription" Nullable="true" />
+          <Property Type="String" Name="serviceProviderName" Nullable="true" />
+          <Property Type="String" Name="serviceProviderAddress" Nullable="true" />
+          <Property Type="String" Name="servicePhoneNumber" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="requestDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="requestStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="initiator" Nullable="true" />
+          <Property Type="DateTime" Name="initiatorTimestamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="staffSupervisor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="hrApprover1" Nullable="true" />
+          <Property Type="String" Name="hrApprover1ApproveReject" Nullable="true" />
+          <Property Type="String" Name="hrApprover1Comment" Nullable="true" />
+          <Property Type="DateTime" Name="hrApprover1Timestamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="hrApprover2" Nullable="true" />
+          <Property Type="DateTime" Name="hrApprover2Timestamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="hrApprover2ApproveReject" Nullable="true" />
+          <Property Type="String" Name="hrApprover2Comment" Nullable="true" />
+          <Property Type="String" Name="bmBranchOfRequest" Nullable="true" />
+          <Property Type="DateTime" Name="bmBranchOfRequestTimestamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="bmBranchOfRequestApproveReject" Nullable="true" />
+          <Property Type="String" Name="bmBranchOfRequestComment" Nullable="true" />
+          <Property Type="String" Name="mdApprover" Nullable="true" />
+          <Property Type="DateTime" Name="mdApproverTimestamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="mdApproverApproveReject" Nullable="true" />
+          <Property Type="String" Name="mdApproverComment" Nullable="true" />
+          <Property Type="String" Name="fileName1" Nullable="true" />
+          <Property Type="String" Name="fileContentType1" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData1" Nullable="true" />
+          <Property Type="String" Name="fileName2" Nullable="true" />
+          <Property Type="String" Name="fileContentType2" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData2" Nullable="true" />
+          <Property Type="String" Name="fileName3" Nullable="true" />
+          <Property Type="String" Name="fileContentType3" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData3" Nullable="true" />
+          <Property Type="String" Name="fileName4" Nullable="true" />
+          <Property Type="String" Name="fileContentType4" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData4" Nullable="true" />
+          <Property Type="String" Name="fileName5" Nullable="true" />
+          <Property Type="String" Name="fileContentType5" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData5" Nullable="true" />
+          <Property Type="String" Name="fileName6" Nullable="true" />
+          <Property Type="String" Name="fileContentType6" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData6" Nullable="true" />
+          <Property Type="String" Name="hrApprover1RejectComment" Nullable="true" />
+          <Property Type="String" Name="hrApprover2RejectComment" Nullable="true" />
+          <Property Type="String" Name="mdApproverRejectComment" Nullable="true" />
+          <Property Type="String" Name="bmApproverRejectComment" Nullable="true" />
+          <Property Type="String" Name="dhApproverRejectComment" Nullable="true" />
+          <Property Type="String" Name="dhApprover" Nullable="true" />
+          <Property Type="DateTime" Name="dhApproverTimestamp" Nullable="true" Precision="23" />
+          <Property Type="String" Name="dhApproverApproveReject" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="dhApproverComment" Nullable="true" />
+          <Property Type="String" Name="hasExistingVehicleLoan" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="hasExistingMortgageLoan" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="dateOfEmployment" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="customField1" Nullable="true" />
+          <Property Type="String" Name="customField1Data" Nullable="true" />
+          <Property Type="String" Name="customField2" Nullable="true" />
+          <Property Type="String" Name="customField2Data" Nullable="true" />
+          <Property Type="String" Name="customField3" Nullable="true" />
+          <Property Type="String" Name="customField3Data" Nullable="true" />
+          <Property Type="String" Name="customField4" Nullable="true" />
+          <Property Type="String" Name="customField4Data" Nullable="true" />
+          <Property Type="String" Name="customField5" Nullable="true" />
+          <Property Type="String" Name="customField5Data" Nullable="true" />
+          <Property Type="String" Name="customField6" Nullable="true" />
+          <Property Type="String" Name="customField6Data" Nullable="true" />
+          <Property Type="String" Name="customField7" Nullable="true" />
+          <Property Type="String" Name="customField7Data" Nullable="true" />
+          <Property Type="String" Name="customField8" Nullable="true" />
+          <Property Type="String" Name="customField8Data" Nullable="true" />
+          <Property Type="String" Name="customField9" Nullable="true" />
+          <Property Type="String" Name="customField9Data" Nullable="true" />
+          <Property Type="String" Name="customField10" Nullable="true" />
+          <Property Type="String" Name="customField10Data" Nullable="true" />
+          <Property Type="Int32" Name="queueId" Nullable="true" />
+          <Property Type="String" Name="fileName7" Nullable="true" />
+          <Property Type="String" Name="fileContentType7" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData7" Nullable="true" />
+          <Property Type="String" Name="fileName8" Nullable="true" />
+          <Property Type="String" Name="fileContentType8" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData8" Nullable="true" />
+          <Property Type="String" Name="fileName9" Nullable="true" />
+          <Property Type="String" Name="fileContentType9" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData9" Nullable="true" />
+          <Property Type="String" Name="fileName10" Nullable="true" />
+          <Property Type="String" Name="fileContentType10" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="fileData10" Nullable="true" />
+          <Property Type="String" Name="documentEmailStatus" Nullable="true" />
+          <Property Type="String" Name="documentEmailSentTime" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRViabilityPortalModelStoreContainer" CdmEntityContainer="HRViabilityPortalEntities">
+          <EntitySetMapping Name="AuditLogs">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.AuditLog">
+              <MappingFragment StoreEntitySet="AuditLogs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ActivityPerformed" ColumnName="ActivityPerformed" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DateOfActivity" ColumnName="DateOfActivity" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaiMuajjalDocumentsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BaiMuajjalDocumentsTable">
+              <MappingFragment StoreEntitySet="BaiMuajjalDocumentsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaiMuajjalFormsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BaiMuajjalFormsTable">
+              <MappingFragment StoreEntitySet="BaiMuajjalFormsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaiMuajjalGradesTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BaiMuajjalGradesTable">
+              <MappingFragment StoreEntitySet="BaiMuajjalGradesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BMDetails">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BMDetail">
+              <MappingFragment StoreEntitySet="BMDetails">
+                <ScalarProperty Name="staffId" ColumnName="staffId" />
+                <ScalarProperty Name="staffName" ColumnName="staffName" />
+                <ScalarProperty Name="branchName" ColumnName="branchName" />
+                <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchDocumentsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BranchDocumentsTable">
+              <MappingFragment StoreEntitySet="BranchDocumentsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchFormsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BranchFormsTable">
+              <MappingFragment StoreEntitySet="BranchFormsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchGradesTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.BranchGradesTable">
+              <MappingFragment StoreEntitySet="BranchGradesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailAccounts">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.EmailAccount">
+              <MappingFragment StoreEntitySet="EmailAccount">
+                <ScalarProperty Name="emailID" ColumnName="emailID" />
+                <ScalarProperty Name="emailName" ColumnName="emailName" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="emailPassword" ColumnName="emailPassword" />
+                <ScalarProperty Name="emailGateway" ColumnName="emailGateway" />
+                <ScalarProperty Name="emailUserName" ColumnName="emailUserName" />
+                <ScalarProperty Name="emailStatus" ColumnName="emailStatus" />
+                <ScalarProperty Name="emailINTBK" ColumnName="emailINTBK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailBoxes">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.EmailBox">
+              <MappingFragment StoreEntitySet="EmailBox">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+                <ScalarProperty Name="HasAttachment" ColumnName="HasAttachment" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="EmailStatus" ColumnName="EmailStatus" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="Platform" ColumnName="Platform" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Facility">
+              <MappingFragment StoreEntitySet="Facility">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="facilityName" ColumnName="facilityName" />
+                <ScalarProperty Name="confirmedStaff" ColumnName="confirmedStaff" />
+                <ScalarProperty Name="unconfirmedStaff" ColumnName="unconfirmedStaff" />
+                <ScalarProperty Name="permanentStaff" ColumnName="permanentStaff" />
+                <ScalarProperty Name="contractStaff" ColumnName="contractStaff" />
+                <ScalarProperty Name="expectedLengthOfService" ColumnName="expectedLengthOfService" />
+                <ScalarProperty Name="percentageRate" ColumnName="percentageRate" />
+                <ScalarProperty Name="staffBranchPercentageRate" ColumnName="staffBranchPercentageRate" />
+                <ScalarProperty Name="minimumAnnualGrossAllowance" ColumnName="minimumAnnualGrossAllowance" />
+                <ScalarProperty Name="minimumAnnualHousingAllowance" ColumnName="minimumAnnualHousingAllowance" />
+                <ScalarProperty Name="maximumAmountLimit" ColumnName="maximumAmountLimit" />
+                <ScalarProperty Name="totalDeductionFromSalary" ColumnName="totalDeductionFromSalary" />
+                <ScalarProperty Name="minimumTenor" ColumnName="minimumTenor" />
+                <ScalarProperty Name="maximumTenor" ColumnName="maximumTenor" />
+                <ScalarProperty Name="undertakingFormNeeded" ColumnName="undertakingFormNeeded" />
+                <ScalarProperty Name="supervisorEndorsementNeeded" ColumnName="supervisorEndorsementNeeded" />
+                <ScalarProperty Name="searchAuthorityNeeded" ColumnName="searchAuthorityNeeded" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="facilityComments" ColumnName="facilityComments" />
+                <ScalarProperty Name="document1" ColumnName="document1" />
+                <ScalarProperty Name="document2" ColumnName="document2" />
+                <ScalarProperty Name="document3" ColumnName="document3" />
+                <ScalarProperty Name="document4" ColumnName="document4" />
+                <ScalarProperty Name="document5" ColumnName="document5" />
+                <ScalarProperty Name="document6" ColumnName="document6" />
+                <ScalarProperty Name="document7" ColumnName="document7" />
+                <ScalarProperty Name="document8" ColumnName="document8" />
+                <ScalarProperty Name="document9" ColumnName="document9" />
+                <ScalarProperty Name="document10" ColumnName="document10" />
+                <ScalarProperty Name="form1" ColumnName="form1" />
+                <ScalarProperty Name="form2" ColumnName="form2" />
+                <ScalarProperty Name="form3" ColumnName="form3" />
+                <ScalarProperty Name="form4" ColumnName="form4" />
+                <ScalarProperty Name="form5" ColumnName="form5" />
+                <ScalarProperty Name="form6" ColumnName="form6" />
+                <ScalarProperty Name="form7" ColumnName="form7" />
+                <ScalarProperty Name="form8" ColumnName="form8" />
+                <ScalarProperty Name="form9" ColumnName="form9" />
+                <ScalarProperty Name="form10" ColumnName="form10" />
+                <ScalarProperty Name="facilityRulesComments" ColumnName="facilityRulesComments" />
+                <ScalarProperty Name="facilityRulesSet" ColumnName="facilityRulesSet" />
+                <ScalarProperty Name="maximumAmountLimitOption" ColumnName="maximumAmountLimitOption" />
+                <ScalarProperty Name="mdApproval" ColumnName="mdApproval" />
+                <ScalarProperty Name="downPaymentRequired" ColumnName="downPaymentRequired" />
+                <ScalarProperty Name="dhApproval" ColumnName="dhApproval" />
+                <ScalarProperty Name="customField1" ColumnName="customField1" />
+                <ScalarProperty Name="customField2" ColumnName="customField2" />
+                <ScalarProperty Name="customField3" ColumnName="customField3" />
+                <ScalarProperty Name="customField4" ColumnName="customField4" />
+                <ScalarProperty Name="customField5" ColumnName="customField5" />
+                <ScalarProperty Name="customField6" ColumnName="customField6" />
+                <ScalarProperty Name="customField7" ColumnName="customField7" />
+                <ScalarProperty Name="customField8" ColumnName="customField8" />
+                <ScalarProperty Name="customField9" ColumnName="customField9" />
+                <ScalarProperty Name="customField10" ColumnName="customField10" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityDocuments">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.FacilityDocument">
+              <MappingFragment StoreEntitySet="FacilityDocuments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityForms">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.FacilityForm">
+              <MappingFragment StoreEntitySet="FacilityForms">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityUndertakings">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.FacilityUndertaking">
+              <MappingFragment StoreEntitySet="FacilityUndertaking">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="undertakingType" ColumnName="undertakingType" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFinanceDocumentsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinanceDocumentsTable">
+              <MappingFragment StoreEntitySet="HomeFinanceDocumentsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFinanceFormsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinanceFormsTable">
+              <MappingFragment StoreEntitySet="HomeFinanceFormsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFinanceGradesTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinanceGradesTable">
+              <MappingFragment StoreEntitySet="HomeFinanceGradesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HRBranchesMasters">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HRBranchesMaster">
+              <MappingFragment StoreEntitySet="HRBranchesMaster">
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HRFacilityMasters">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HRFacilityMaster">
+              <MappingFragment StoreEntitySet="HRFacilityMaster">
+                <ScalarProperty Name="documentEmailSentTime" ColumnName="documentEmailSentTime" />
+                <ScalarProperty Name="documentEmailStatus" ColumnName="documentEmailStatus" />
+                <ScalarProperty Name="fileData10" ColumnName="fileData10" />
+                <ScalarProperty Name="fileContentType10" ColumnName="fileContentType10" />
+                <ScalarProperty Name="fileName10" ColumnName="fileName10" />
+                <ScalarProperty Name="fileData9" ColumnName="fileData9" />
+                <ScalarProperty Name="fileContentType9" ColumnName="fileContentType9" />
+                <ScalarProperty Name="fileName9" ColumnName="fileName9" />
+                <ScalarProperty Name="fileData8" ColumnName="fileData8" />
+                <ScalarProperty Name="fileContentType8" ColumnName="fileContentType8" />
+                <ScalarProperty Name="fileName8" ColumnName="fileName8" />
+                <ScalarProperty Name="fileData7" ColumnName="fileData7" />
+                <ScalarProperty Name="fileContentType7" ColumnName="fileContentType7" />
+                <ScalarProperty Name="fileName7" ColumnName="fileName7" />
+                <ScalarProperty Name="queueId" ColumnName="queueId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="requestReferenceNumber" ColumnName="requestReferenceNumber" />
+                <ScalarProperty Name="staffId" ColumnName="staffId" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="cif" ColumnName="cif" />
+                <ScalarProperty Name="accountName" ColumnName="accountName" />
+                <ScalarProperty Name="facilityName" ColumnName="facilityName" />
+                <ScalarProperty Name="salaryGrade" ColumnName="salaryGrade" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="staffEmailAddress" ColumnName="staffEmailAddress" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="natureOfEmployment" ColumnName="natureOfEmployment" />
+                <ScalarProperty Name="numberOfMonthsInService" ColumnName="numberOfMonthsInService" />
+                <ScalarProperty Name="jobFunction" ColumnName="jobFunction" />
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="grossAnnualSalary" ColumnName="grossAnnualSalary" />
+                <ScalarProperty Name="netMonthlySalary" ColumnName="netMonthlySalary" />
+                <ScalarProperty Name="annualHousingAllowance" ColumnName="annualHousingAllowance" />
+                <ScalarProperty Name="outstandingLoanAmount" ColumnName="outstandingLoanAmount" />
+                <ScalarProperty Name="noOfMonthsRemainingOnfacility" ColumnName="noOfMonthsRemainingOnfacility" />
+                <ScalarProperty Name="amountRequested" ColumnName="amountRequested" />
+                <ScalarProperty Name="downPaymentContribution" ColumnName="downPaymentContribution" />
+                <ScalarProperty Name="repaymentAmount" ColumnName="repaymentAmount" />
+                <ScalarProperty Name="percentageRate" ColumnName="percentageRate" />
+                <ScalarProperty Name="tenor" ColumnName="tenor" />
+                <ScalarProperty Name="loanPurpose" ColumnName="loanPurpose" />
+                <ScalarProperty Name="assetDescription" ColumnName="assetDescription" />
+                <ScalarProperty Name="vendorsName" ColumnName="vendorsName" />
+                <ScalarProperty Name="vendorsAddress" ColumnName="vendorsAddress" />
+                <ScalarProperty Name="vendorsPhoneNumber" ColumnName="vendorsPhoneNumber" />
+                <ScalarProperty Name="locationOfAsset" ColumnName="locationOfAsset" />
+                <ScalarProperty Name="vehicleModel" ColumnName="vehicleModel" />
+                <ScalarProperty Name="yearOfManufacture" ColumnName="yearOfManufacture" />
+                <ScalarProperty Name="modeOfDelivery" ColumnName="modeOfDelivery" />
+                <ScalarProperty Name="quotationEnclosed" ColumnName="quotationEnclosed" />
+                <ScalarProperty Name="typeOfProperty" ColumnName="typeOfProperty" />
+                <ScalarProperty Name="propertyDescription" ColumnName="propertyDescription" />
+                <ScalarProperty Name="titleDocumentType" ColumnName="titleDocumentType" />
+                <ScalarProperty Name="nameOfDeveloper" ColumnName="nameOfDeveloper" />
+                <ScalarProperty Name="addressOfDeveloper" ColumnName="addressOfDeveloper" />
+                <ScalarProperty Name="phoneNumberOfDeveloper" ColumnName="phoneNumberOfDeveloper" />
+                <ScalarProperty Name="locationOfProperty" ColumnName="locationOfProperty" />
+                <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+                <ScalarProperty Name="serviceProviderName" ColumnName="serviceProviderName" />
+                <ScalarProperty Name="serviceProviderAddress" ColumnName="serviceProviderAddress" />
+                <ScalarProperty Name="servicePhoneNumber" ColumnName="servicePhoneNumber" />
+                <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+                <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+                <ScalarProperty Name="initiator" ColumnName="initiator" />
+                <ScalarProperty Name="initiatorTimestamp" ColumnName="initiatorTimestamp" />
+                <ScalarProperty Name="staffSupervisor" ColumnName="staffSupervisor" />
+                <ScalarProperty Name="hrApprover1" ColumnName="hrApprover1" />
+                <ScalarProperty Name="hrApprover1ApproveReject" ColumnName="hrApprover1ApproveReject" />
+                <ScalarProperty Name="hrApprover1Comment" ColumnName="hrApprover1Comment" />
+                <ScalarProperty Name="hrApprover1Timestamp" ColumnName="hrApprover1Timestamp" />
+                <ScalarProperty Name="hrApprover2" ColumnName="hrApprover2" />
+                <ScalarProperty Name="hrApprover2Timestamp" ColumnName="hrApprover2Timestamp" />
+                <ScalarProperty Name="hrApprover2ApproveReject" ColumnName="hrApprover2ApproveReject" />
+                <ScalarProperty Name="hrApprover2Comment" ColumnName="hrApprover2Comment" />
+                <ScalarProperty Name="bmBranchOfRequest" ColumnName="bmBranchOfRequest" />
+                <ScalarProperty Name="bmBranchOfRequestTimestamp" ColumnName="bmBranchOfRequestTimestamp" />
+                <ScalarProperty Name="bmBranchOfRequestApproveReject" ColumnName="bmBranchOfRequestApproveReject" />
+                <ScalarProperty Name="bmBranchOfRequestComment" ColumnName="bmBranchOfRequestComment" />
+                <ScalarProperty Name="mdApprover" ColumnName="mdApprover" />
+                <ScalarProperty Name="mdApproverTimestamp" ColumnName="mdApproverTimestamp" />
+                <ScalarProperty Name="mdApproverApproveReject" ColumnName="mdApproverApproveReject" />
+                <ScalarProperty Name="mdApproverComment" ColumnName="mdApproverComment" />
+                <ScalarProperty Name="fileName1" ColumnName="fileName1" />
+                <ScalarProperty Name="fileContentType1" ColumnName="fileContentType1" />
+                <ScalarProperty Name="fileData1" ColumnName="fileData1" />
+                <ScalarProperty Name="fileName2" ColumnName="fileName2" />
+                <ScalarProperty Name="fileContentType2" ColumnName="fileContentType2" />
+                <ScalarProperty Name="fileData2" ColumnName="fileData2" />
+                <ScalarProperty Name="fileName3" ColumnName="fileName3" />
+                <ScalarProperty Name="fileContentType3" ColumnName="fileContentType3" />
+                <ScalarProperty Name="fileData3" ColumnName="fileData3" />
+                <ScalarProperty Name="fileName4" ColumnName="fileName4" />
+                <ScalarProperty Name="fileContentType4" ColumnName="fileContentType4" />
+                <ScalarProperty Name="fileData4" ColumnName="fileData4" />
+                <ScalarProperty Name="fileName5" ColumnName="fileName5" />
+                <ScalarProperty Name="fileContentType5" ColumnName="fileContentType5" />
+                <ScalarProperty Name="fileData5" ColumnName="fileData5" />
+                <ScalarProperty Name="fileName6" ColumnName="fileName6" />
+                <ScalarProperty Name="fileContentType6" ColumnName="fileContentType6" />
+                <ScalarProperty Name="fileData6" ColumnName="fileData6" />
+                <ScalarProperty Name="hrApprover1RejectComment" ColumnName="hrApprover1RejectComment" />
+                <ScalarProperty Name="hrApprover2RejectComment" ColumnName="hrApprover2RejectComment" />
+                <ScalarProperty Name="mdApproverRejectComment" ColumnName="mdApproverRejectComment" />
+                <ScalarProperty Name="bmApproverRejectComment" ColumnName="bmApproverRejectComment" />
+                <ScalarProperty Name="dhApproverRejectComment" ColumnName="dhApproverRejectComment" />
+                <ScalarProperty Name="dhApprover" ColumnName="dhApprover" />
+                <ScalarProperty Name="dhApproverTimestamp" ColumnName="dhApproverTimestamp" />
+                <ScalarProperty Name="dhApproverApproveReject" ColumnName="dhApproverApproveReject" />
+                <ScalarProperty Name="dhApproverComment" ColumnName="dhApproverComment" />
+                <ScalarProperty Name="hasExistingVehicleLoan" ColumnName="hasExistingVehicleLoan" />
+                <ScalarProperty Name="hasExistingMortgageLoan" ColumnName="hasExistingMortgageLoan" />
+                <ScalarProperty Name="dateOfEmployment" ColumnName="dateOfEmployment" />
+                <ScalarProperty Name="customField1" ColumnName="customField1" />
+                <ScalarProperty Name="customField1Data" ColumnName="customField1Data" />
+                <ScalarProperty Name="customField2" ColumnName="customField2" />
+                <ScalarProperty Name="customField2Data" ColumnName="customField2Data" />
+                <ScalarProperty Name="customField3" ColumnName="customField3" />
+                <ScalarProperty Name="customField3Data" ColumnName="customField3Data" />
+                <ScalarProperty Name="customField4" ColumnName="customField4" />
+                <ScalarProperty Name="customField4Data" ColumnName="customField4Data" />
+                <ScalarProperty Name="customField5" ColumnName="customField5" />
+                <ScalarProperty Name="customField5Data" ColumnName="customField5Data" />
+                <ScalarProperty Name="customField6" ColumnName="customField6" />
+                <ScalarProperty Name="customField6Data" ColumnName="customField6Data" />
+                <ScalarProperty Name="customField7" ColumnName="customField7" />
+                <ScalarProperty Name="customField7Data" ColumnName="customField7Data" />
+                <ScalarProperty Name="customField8" ColumnName="customField8" />
+                <ScalarProperty Name="customField8Data" ColumnName="customField8Data" />
+                <ScalarProperty Name="customField9" ColumnName="customField9" />
+                <ScalarProperty Name="customField9Data" ColumnName="customField9Data" />
+                <ScalarProperty Name="customField10" ColumnName="customField10" />
+                <ScalarProperty Name="customField10Data" ColumnName="customField10Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HRPayrolls">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HRPayroll">
+              <MappingFragment StoreEntitySet="HRPayroll">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+                <ScalarProperty Name="AnnualGrossPackage" ColumnName="AnnualGrossPackage" />
+                <ScalarProperty Name="AnnualHousingAllowance" ColumnName="AnnualHousingAllowance" />
+                <ScalarProperty Name="MonthlyGrossPackage" ColumnName="MonthlyGrossPackage" />
+                <ScalarProperty Name="MonthlyNetPackage" ColumnName="MonthlyNetPackage" />
+                <ScalarProperty Name="PensionsContribution" ColumnName="PensionsContribution" />
+                <ScalarProperty Name="PAYE" ColumnName="PAYE" />
+                <ScalarProperty Name="NHF" ColumnName="NHF" />
+                <ScalarProperty Name="TotalAnnualDeduction" ColumnName="TotalAnnualDeduction" />
+                <ScalarProperty Name="TotalMonthlyDeduction" ColumnName="TotalMonthlyDeduction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IjaraServiceDocumentsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.IjaraServiceDocumentsTable">
+              <MappingFragment StoreEntitySet="IjaraServiceDocumentsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IjaraServiceFormsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.IjaraServiceFormsTable">
+              <MappingFragment StoreEntitySet="IjaraServiceFormsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IjaraServiceGradesTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.IjaraServiceGradesTable">
+              <MappingFragment StoreEntitySet="IjaraServiceGradesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MurabahaDocumentsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.MurabahaDocumentsTable">
+              <MappingFragment StoreEntitySet="MurabahaDocumentsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MurabahaFormsTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.MurabahaFormsTable">
+              <MappingFragment StoreEntitySet="MurabahaFormsTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MurabahaGradesTables">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.MurabahaGradesTable">
+              <MappingFragment StoreEntitySet="MurabahaGradesTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReqHistories">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.ReqHistory">
+              <MappingFragment StoreEntitySet="ReqHistory">
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="ReqId" ColumnName="ReqId" />
+                <ScalarProperty Name="Initiator" ColumnName="Initiator" />
+                <ScalarProperty Name="ActionPerformed" ColumnName="ActionPerformed" />
+                <ScalarProperty Name="ActionDateTime" ColumnName="ActionDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffGradesSalaries">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.StaffGradesSalary">
+              <MappingFragment StoreEntitySet="StaffGradesSalary">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="annualHousingAllowance" ColumnName="annualHousingAllowance" />
+                <ScalarProperty Name="grossAnnualSalary" ColumnName="grossAnnualSalary" />
+                <ScalarProperty Name="netMonthlySalary" ColumnName="netMonthlySalary" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffGradesAllowances">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.StaffGradesAllowance">
+              <MappingFragment StoreEntitySet="StaffGradesAllowances">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="otherBranchesAnnualGrosss" ColumnName="otherBranchesAnnualGrosss" />
+                <ScalarProperty Name="abjLagPhcBranchesAnnualGross" ColumnName="abjLagPhcBranchesAnnualGross" />
+                <ScalarProperty Name="otherBranchesHousing" ColumnName="otherBranchesHousing" />
+                <ScalarProperty Name="abjLagPhcBranchesHousing" ColumnName="abjLagPhcBranchesHousing" />
+                <ScalarProperty Name="gradeLevelCode" ColumnName="gradeLevelCode" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFinance18PercentDocumentsTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinance18PercentDocumentsTable">
+              <MappingFragment StoreEntitySet="HomeFinance18PercentDocumentsTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFinance18PercentFormsTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinance18PercentFormsTable">
+              <MappingFragment StoreEntitySet="HomeFinance18PercentFormsTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFinance18PercentGradesTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinance18PercentGradesTable">
+              <MappingFragment StoreEntitySet="HomeFinance18PercentGradesTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Murabaha18PercentDocumentsTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha18PercentDocumentsTable">
+              <MappingFragment StoreEntitySet="Murabaha18PercentDocumentsTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Murabaha18PercentFormsTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha18PercentFormsTable">
+              <MappingFragment StoreEntitySet="Murabaha18PercentFormsTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Murabaha18PercentGradesTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha18PercentGradesTable">
+              <MappingFragment StoreEntitySet="Murabaha18PercentGradesTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Murabaha5PercentDocumentsTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha5PercentDocumentsTable">
+              <MappingFragment StoreEntitySet="Murabaha5PercentDocumentsTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Murabaha5PercentFormsTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha5PercentFormsTable">
+              <MappingFragment StoreEntitySet="Murabaha5PercentFormsTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Murabaha5PercentGradesTable">
+            <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha5PercentGradesTable">
+              <MappingFragment StoreEntitySet="Murabaha5PercentGradesTable">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SELECT_REPORT_TRANS" FunctionName="HRViabilityPortalModel.Store.SELECT_REPORT_TRANS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HRViabilityPortalModel.SELECT_REPORT_TRANS_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="requestReferenceNumber" ColumnName="requestReferenceNumber" />
+                <ScalarProperty Name="staffId" ColumnName="staffId" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="cif" ColumnName="cif" />
+                <ScalarProperty Name="accountName" ColumnName="accountName" />
+                <ScalarProperty Name="facilityName" ColumnName="facilityName" />
+                <ScalarProperty Name="salaryGrade" ColumnName="salaryGrade" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="staffEmailAddress" ColumnName="staffEmailAddress" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="natureOfEmployment" ColumnName="natureOfEmployment" />
+                <ScalarProperty Name="numberOfMonthsInService" ColumnName="numberOfMonthsInService" />
+                <ScalarProperty Name="jobFunction" ColumnName="jobFunction" />
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="grossAnnualSalary" ColumnName="grossAnnualSalary" />
+                <ScalarProperty Name="netMonthlySalary" ColumnName="netMonthlySalary" />
+                <ScalarProperty Name="annualHousingAllowance" ColumnName="annualHousingAllowance" />
+                <ScalarProperty Name="outstandingLoanAmount" ColumnName="outstandingLoanAmount" />
+                <ScalarProperty Name="noOfMonthsRemainingOnfacility" ColumnName="noOfMonthsRemainingOnfacility" />
+                <ScalarProperty Name="amountRequested" ColumnName="amountRequested" />
+                <ScalarProperty Name="downPaymentContribution" ColumnName="downPaymentContribution" />
+                <ScalarProperty Name="repaymentAmount" ColumnName="repaymentAmount" />
+                <ScalarProperty Name="percentageRate" ColumnName="percentageRate" />
+                <ScalarProperty Name="tenor" ColumnName="tenor" />
+                <ScalarProperty Name="loanPurpose" ColumnName="loanPurpose" />
+                <ScalarProperty Name="assetDescription" ColumnName="assetDescription" />
+                <ScalarProperty Name="vendorsName" ColumnName="vendorsName" />
+                <ScalarProperty Name="vendorsAddress" ColumnName="vendorsAddress" />
+                <ScalarProperty Name="vendorsPhoneNumber" ColumnName="vendorsPhoneNumber" />
+                <ScalarProperty Name="locationOfAsset" ColumnName="locationOfAsset" />
+                <ScalarProperty Name="vehicleModel" ColumnName="vehicleModel" />
+                <ScalarProperty Name="yearOfManufacture" ColumnName="yearOfManufacture" />
+                <ScalarProperty Name="modeOfDelivery" ColumnName="modeOfDelivery" />
+                <ScalarProperty Name="quotationEnclosed" ColumnName="quotationEnclosed" />
+                <ScalarProperty Name="typeOfProperty" ColumnName="typeOfProperty" />
+                <ScalarProperty Name="propertyDescription" ColumnName="propertyDescription" />
+                <ScalarProperty Name="titleDocumentType" ColumnName="titleDocumentType" />
+                <ScalarProperty Name="nameOfDeveloper" ColumnName="nameOfDeveloper" />
+                <ScalarProperty Name="addressOfDeveloper" ColumnName="addressOfDeveloper" />
+                <ScalarProperty Name="phoneNumberOfDeveloper" ColumnName="phoneNumberOfDeveloper" />
+                <ScalarProperty Name="locationOfProperty" ColumnName="locationOfProperty" />
+                <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+                <ScalarProperty Name="serviceProviderName" ColumnName="serviceProviderName" />
+                <ScalarProperty Name="serviceProviderAddress" ColumnName="serviceProviderAddress" />
+                <ScalarProperty Name="servicePhoneNumber" ColumnName="servicePhoneNumber" />
+                <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+                <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+                <ScalarProperty Name="initiator" ColumnName="initiator" />
+                <ScalarProperty Name="initiatorTimestamp" ColumnName="initiatorTimestamp" />
+                <ScalarProperty Name="staffSupervisor" ColumnName="staffSupervisor" />
+                <ScalarProperty Name="hrApprover1" ColumnName="hrApprover1" />
+                <ScalarProperty Name="hrApprover1ApproveReject" ColumnName="hrApprover1ApproveReject" />
+                <ScalarProperty Name="hrApprover1Comment" ColumnName="hrApprover1Comment" />
+                <ScalarProperty Name="hrApprover1Timestamp" ColumnName="hrApprover1Timestamp" />
+                <ScalarProperty Name="hrApprover2" ColumnName="hrApprover2" />
+                <ScalarProperty Name="hrApprover2Timestamp" ColumnName="hrApprover2Timestamp" />
+                <ScalarProperty Name="hrApprover2ApproveReject" ColumnName="hrApprover2ApproveReject" />
+                <ScalarProperty Name="hrApprover2Comment" ColumnName="hrApprover2Comment" />
+                <ScalarProperty Name="bmBranchOfRequest" ColumnName="bmBranchOfRequest" />
+                <ScalarProperty Name="bmBranchOfRequestTimestamp" ColumnName="bmBranchOfRequestTimestamp" />
+                <ScalarProperty Name="bmBranchOfRequestApproveReject" ColumnName="bmBranchOfRequestApproveReject" />
+                <ScalarProperty Name="bmBranchOfRequestComment" ColumnName="bmBranchOfRequestComment" />
+                <ScalarProperty Name="mdApprover" ColumnName="mdApprover" />
+                <ScalarProperty Name="mdApproverTimestamp" ColumnName="mdApproverTimestamp" />
+                <ScalarProperty Name="mdApproverApproveReject" ColumnName="mdApproverApproveReject" />
+                <ScalarProperty Name="mdApproverComment" ColumnName="mdApproverComment" />
+                <ScalarProperty Name="fileName1" ColumnName="fileName1" />
+                <ScalarProperty Name="fileContentType1" ColumnName="fileContentType1" />
+                <ScalarProperty Name="fileData1" ColumnName="fileData1" />
+                <ScalarProperty Name="fileName2" ColumnName="fileName2" />
+                <ScalarProperty Name="fileContentType2" ColumnName="fileContentType2" />
+                <ScalarProperty Name="fileData2" ColumnName="fileData2" />
+                <ScalarProperty Name="fileName3" ColumnName="fileName3" />
+                <ScalarProperty Name="fileContentType3" ColumnName="fileContentType3" />
+                <ScalarProperty Name="fileData3" ColumnName="fileData3" />
+                <ScalarProperty Name="fileName4" ColumnName="fileName4" />
+                <ScalarProperty Name="fileContentType4" ColumnName="fileContentType4" />
+                <ScalarProperty Name="fileData4" ColumnName="fileData4" />
+                <ScalarProperty Name="fileName5" ColumnName="fileName5" />
+                <ScalarProperty Name="fileContentType5" ColumnName="fileContentType5" />
+                <ScalarProperty Name="fileData5" ColumnName="fileData5" />
+                <ScalarProperty Name="fileName6" ColumnName="fileName6" />
+                <ScalarProperty Name="fileContentType6" ColumnName="fileContentType6" />
+                <ScalarProperty Name="fileData6" ColumnName="fileData6" />
+                <ScalarProperty Name="hrApprover1RejectComment" ColumnName="hrApprover1RejectComment" />
+                <ScalarProperty Name="hrApprover2RejectComment" ColumnName="hrApprover2RejectComment" />
+                <ScalarProperty Name="mdApproverRejectComment" ColumnName="mdApproverRejectComment" />
+                <ScalarProperty Name="bmApproverRejectComment" ColumnName="bmApproverRejectComment" />
+                <ScalarProperty Name="dhApproverRejectComment" ColumnName="dhApproverRejectComment" />
+                <ScalarProperty Name="dhApprover" ColumnName="dhApprover" />
+                <ScalarProperty Name="dhApproverTimestamp" ColumnName="dhApproverTimestamp" />
+                <ScalarProperty Name="dhApproverApproveReject" ColumnName="dhApproverApproveReject" />
+                <ScalarProperty Name="dhApproverComment" ColumnName="dhApproverComment" />
+                <ScalarProperty Name="hasExistingVehicleLoan" ColumnName="hasExistingVehicleLoan" />
+                <ScalarProperty Name="hasExistingMortgageLoan" ColumnName="hasExistingMortgageLoan" />
+                <ScalarProperty Name="dateOfEmployment" ColumnName="dateOfEmployment" />
+                <ScalarProperty Name="customField1" ColumnName="customField1" />
+                <ScalarProperty Name="customField1Data" ColumnName="customField1Data" />
+                <ScalarProperty Name="customField2" ColumnName="customField2" />
+                <ScalarProperty Name="customField2Data" ColumnName="customField2Data" />
+                <ScalarProperty Name="customField3" ColumnName="customField3" />
+                <ScalarProperty Name="customField3Data" ColumnName="customField3Data" />
+                <ScalarProperty Name="customField4" ColumnName="customField4" />
+                <ScalarProperty Name="customField4Data" ColumnName="customField4Data" />
+                <ScalarProperty Name="customField5" ColumnName="customField5" />
+                <ScalarProperty Name="customField5Data" ColumnName="customField5Data" />
+                <ScalarProperty Name="customField6" ColumnName="customField6" />
+                <ScalarProperty Name="customField6Data" ColumnName="customField6Data" />
+                <ScalarProperty Name="customField7" ColumnName="customField7" />
+                <ScalarProperty Name="customField7Data" ColumnName="customField7Data" />
+                <ScalarProperty Name="customField8" ColumnName="customField8" />
+                <ScalarProperty Name="customField8Data" ColumnName="customField8Data" />
+                <ScalarProperty Name="customField9" ColumnName="customField9" />
+                <ScalarProperty Name="customField9Data" ColumnName="customField9Data" />
+                <ScalarProperty Name="customField10" ColumnName="customField10" />
+                <ScalarProperty Name="customField10Data" ColumnName="customField10Data" />
+                <ScalarProperty Name="queueId" ColumnName="queueId" />
+                <ScalarProperty Name="fileName7" ColumnName="fileName7" />
+                <ScalarProperty Name="fileContentType7" ColumnName="fileContentType7" />
+                <ScalarProperty Name="fileData7" ColumnName="fileData7" />
+                <ScalarProperty Name="fileName8" ColumnName="fileName8" />
+                <ScalarProperty Name="fileContentType8" ColumnName="fileContentType8" />
+                <ScalarProperty Name="fileData8" ColumnName="fileData8" />
+                <ScalarProperty Name="fileName9" ColumnName="fileName9" />
+                <ScalarProperty Name="fileContentType9" ColumnName="fileContentType9" />
+                <ScalarProperty Name="fileData9" ColumnName="fileData9" />
+                <ScalarProperty Name="fileName10" ColumnName="fileName10" />
+                <ScalarProperty Name="fileContentType10" ColumnName="fileContentType10" />
+                <ScalarProperty Name="fileData10" ColumnName="fileData10" />
+                <ScalarProperty Name="documentEmailStatus" ColumnName="documentEmailStatus" />
+                <ScalarProperty Name="documentEmailSentTime" ColumnName="documentEmailSentTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

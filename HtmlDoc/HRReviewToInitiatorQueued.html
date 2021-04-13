@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+
+
+        body {
+        }
+
+
+        #emailcss {
+            font-family: "Gill Sans MT";
+            font-size: 12px;
+            width: 671px;
+            text-align: left;
+            border: 4px solid #703235;
+            height: 408px;
+        }
+
+            #emailcss th {
+                font-size: 14px;
+                font-weight: normal;
+                padding: 10px 8px;
+                color: #039;
+                text-align: left;
+            }
+
+            #emailcss td {
+                padding: 8px;
+                color: #669;
+            }
+
+            #emailcss .odd {
+                background: #F5F5F5;
+                width: 20px;
+            }
+
+        .style1 {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .style4 {
+            font-weight: bold;
+            width: 6%;
+        }
+    </style>
+</head>
+<body>
+    <table id="emailcss">
+        <thead>
+            <tr>
+                <td scope="col" colspan="2" align="left">
+                    <strong>Notification Alert </strong>:
+                    <strong>Facility Request&nbsp;Queued For Later!</strong>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" colspan="2" align="left">Hello,</td>
+            </tr>
+            <tr align="left">
+                <td scope="col" colspan="2">
+                    Your Facility request has been queued for now by HR.
+                    &nbsp;Find details below:
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="odd">
+                <td class="style4">Reference Number:</td>
+                <td>{refNo}</td>
+            </tr>          
+            <tr>
+                <td class="style4">Request Date:</td>
+                <td> {date}</td>
+            </tr>
+            <tr class="odd">
+                <td class="style4">Requested By </td>
+                <td>{initiator}</td>
+            </tr>
+            <tr>
+                <td class="style4">Reviewed By:</td>
+                <td> {hrreviewer}</td>
+            </tr>
+            <tr>
+                <td class="style4">Comments:</td>
+                <td> {comments}</td>
+            </tr>
+
+            <tr>
+                <td class="style1" colspan="2">
+                    Please do not reply this email. Kindly login to the HR Viability Portal through: http://172.13.21.160:8013/HRViabilityPortal
+                    <p>
+                        Thank You<br />
+                        HR Viability Team
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

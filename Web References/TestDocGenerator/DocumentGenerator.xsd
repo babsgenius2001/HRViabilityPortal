@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://controller.hrviability.jaizbank.com/" targetNamespace="http://controller.hrviability.jaizbank.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CreateApplicationForm" type="tns:CreateApplicationForm" />
+  <xs:element name="CreateApplicationFormResponse" type="tns:CreateApplicationFormResponse" />
+  <xs:element name="CreateDocuments" type="tns:CreateDocuments" />
+  <xs:element name="CreateDocumentsResponse" type="tns:CreateDocumentsResponse" />
+  <xs:element name="CreateSukukForm" type="tns:CreateSukukForm" />
+  <xs:element name="CreateSukukFormResponse" type="tns:CreateSukukFormResponse" />
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="GenerateFacilityReceipt" type="tns:GenerateFacilityReceipt" />
+  <xs:element name="GenerateFacilityReceiptResponse" type="tns:GenerateFacilityReceiptResponse" />
+  <xs:complexType name="CreateDocuments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StaffId" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffName" type="xs:string" />
+      <xs:element minOccurs="0" name="NatureOfEmployment" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployerAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="NetMonthlySalary" type="xs:string" />
+      <xs:element minOccurs="0" name="AnnualGrossPackage" type="xs:string" />
+      <xs:element minOccurs="0" name="FacilityType" type="xs:string" />
+      <xs:element minOccurs="0" name="DateofAssumption" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:string" />
+      <xs:element minOccurs="0" name="JobFunction" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountRequested" type="xs:string" />
+      <xs:element minOccurs="0" name="DownPayment" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" type="xs:string" />
+      <xs:element minOccurs="0" name="LengthOfService" type="xs:int" />
+      <xs:element minOccurs="0" name="Tenor" type="xs:int" />
+      <xs:element minOccurs="0" name="LoanPurpose" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentsDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentsDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNum" type="xs:string" />
+      <xs:element minOccurs="0" name="annualGrossPackage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="dateOfEmployment" type="xs:string" />
+      <xs:element minOccurs="0" name="natureOfEmployment" type="xs:string" />
+      <xs:element minOccurs="0" name="netMonthlySalary" type="xs:decimal" />
+      <xs:element minOccurs="0" name="response" type="xs:string" />
+      <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+      <xs:element minOccurs="0" name="responseMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="staffId" type="xs:string" />
+      <xs:element minOccurs="0" name="staffName" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenerateFacilityReceipt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="referenceNo" type="xs:string" />
+      <xs:element minOccurs="0" name="staffID" type="xs:string" />
+      <xs:element minOccurs="0" name="nameOfStaff" type="xs:string" />
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="department" type="xs:string" />
+      <xs:element minOccurs="0" name="grade" type="xs:string" />
+      <xs:element minOccurs="0" name="facilityType" type="xs:string" />
+      <xs:element minOccurs="0" name="amountRequested" type="xs:string" />
+      <xs:element minOccurs="0" name="monthlySalary" type="xs:string" />
+      <xs:element minOccurs="0" name="monthlyRepayment" type="xs:string" />
+      <xs:element minOccurs="0" name="downPayment" type="xs:string" />
+      <xs:element minOccurs="0" name="rate" type="xs:string" />
+      <xs:element minOccurs="0" name="tenor" type="xs:string" />
+      <xs:element minOccurs="0" name="dateOfRequest" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenerateFacilityReceiptResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentsDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateApplicationForm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetDescriptionMurabaha" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetDescriptionBaiMuaajal" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorName" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorPhoneNo" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetLocation" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleModel" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleYear" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryModeMurabaha" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryModeIjara" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeOfProperty" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentTitle" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyLocation" type="xs:string" />
+      <xs:element minOccurs="0" name="DeveloperName" type="xs:string" />
+      <xs:element minOccurs="0" name="DeveloperAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="DeveloperNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceProviderName" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceProviderAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceProviderNo" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceMurabaha" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceIjara" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffName" type="xs:string" />
+      <xs:element minOccurs="0" name="StaffID" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="NatureOfEmployment" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployerAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="NetMonthlySalary" type="xs:string" />
+      <xs:element minOccurs="0" name="AnnualGrossPackage" type="xs:string" />
+      <xs:element minOccurs="0" name="FacilityType" type="xs:string" />
+      <xs:element minOccurs="0" name="DateofAssumption" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:string" />
+      <xs:element minOccurs="0" name="JobFunction" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountRequested" type="xs:string" />
+      <xs:element minOccurs="0" name="DownPayment" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" type="xs:string" />
+      <xs:element minOccurs="0" name="LengthOfService" type="xs:int" />
+      <xs:element minOccurs="0" name="Tenor" type="xs:int" />
+      <xs:element minOccurs="0" name="LoanPurpose" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField1" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField2" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField3" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField4" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField5" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField6" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField7" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField8" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField9" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomField10" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData1" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData2" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData3" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData4" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData5" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData6" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData7" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData8" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData9" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomFieldData10" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherFacilityName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateApplicationFormResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentsDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateSukukForm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReferenceNo" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicantType" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountOfSukuk" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountInWords" type="xs:string" />
+      <xs:element minOccurs="0" name="CustodianAccountNo" type="xs:string" />
+      <xs:element minOccurs="0" name="CSCCAccountNo" type="xs:string" />
+      <xs:element minOccurs="0" name="ClearingHouseNo" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherName" type="xs:string" />
+      <xs:element minOccurs="0" name="Occupation" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:string" />
+      <xs:element minOccurs="0" name="MaidenName" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="NextOfKin" type="xs:string" />
+      <xs:element minOccurs="0" name="BankName" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNo" type="xs:string" />
+      <xs:element minOccurs="0" name="BVN" type="xs:string" />
+      <xs:element minOccurs="0" name="ResidencyStatus" type="xs:string" />
+      <xs:element minOccurs="0" name="InvestorCategory" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="SurnameJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstNameJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherNameJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="OccupationJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumberJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityNumberJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirthJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="MaidenNameJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddressJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="NextOfKinJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="BankNameJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNoJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="BVNJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="ResidencyStatusJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="SurnameJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstNameJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="OtherNameJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="OccupationJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumberJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityNumberJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirthJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="MaidenNameJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddressJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="NextOfKinJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="BankNameJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNoJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="BVNJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="ResidencyStatusJoint2" type="xs:string" />
+      <xs:element minOccurs="0" name="InvestorCategoryJoint" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" type="xs:string" />
+      <xs:element minOccurs="0" name="BusinessType" type="xs:string" />
+      <xs:element minOccurs="0" name="RCNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressCorporate" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddressCorporate" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPersonCorpoate" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumberCorporate" type="xs:string" />
+      <xs:element minOccurs="0" name="BankNameCorporate" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNoCorporate" type="xs:string" />
+      <xs:element minOccurs="0" name="BVNCorporate" type="xs:string" />
+      <xs:element minOccurs="0" name="InvestorCategoryCorporate" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateSukukFormResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentsDetails" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

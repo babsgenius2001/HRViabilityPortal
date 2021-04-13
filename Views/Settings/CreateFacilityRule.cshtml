@@ -1,0 +1,632 @@
+﻿@model HRViabilityPortal.ViewModels.CreateFacilityRuleViewModel
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Create Facility Rule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateFacilityRule", "Settings", FormMethod.Post))
+{
+    <!--BEGIN HIDDEN FIELD AREA-->
+    @Html.HiddenFor(m => m.EventCommand)
+    @Html.HiddenFor(m => m.EventArgument)
+    @Html.HiddenFor(m => m.Mode)
+    <!--END HIDDEN FIELD AREA-->
+    <!--start Loading panel-->
+    <div id="loading" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class=" modal-title">Loading... </h4>
+                </div>
+                <div class=" modal-body">
+                    <div class=" progress progress-striped active">
+                        <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--start Loading panel-->
+
+    <!--BEGIN ADD AREA HERE-->
+    <div class="panel-default panel-heading-custom">
+        <div class="panel-heading">
+
+            <h1 class="panel-title"><center>Create Facility Rules</center></h1>
+        </div>
+        <div class="panel-body">
+            <!--BEGIN ERROR MESSAGE AREA-->
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!Model.IsValid)
+                    {
+                        <div class="alert alert-danger alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">close</span>
+                            </button>
+                            @Html.ValidationSummary(false)
+                        </div>
+                    }
+                    @if (TempData["Msg"] != null)
+                    {
+                        <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                x
+                            </button>
+                            @TempData["Msg"].ToString()
+                        </div>
+                    }
+                </div>
+            </div>
+            @if (Model.IsDetailAreaVisible)
+            {
+
+                <div class="content-wrapper">
+                    <section class="content">
+                        <div class="container">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <div colspan="5">
+                                            <div class="well form-horizontal">
+                                                <fieldset>
+                                                    @if (Model.IsStep1)
+                                                    {
+                                                        <h4>Step 1 of 4</h4>
+                                                        <hr />
+                                                        <div class="form-group row">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.facilityName, "Facility Name:", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.facilityName, new SelectList(Model.ListOfFacilities, "Text", "Value"), new { @class = "form-control", id = "FacilityType" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.confirmedStaff, "Confirmed Staff?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.confirmedStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.unconfirmedStaff, "Unconfirmed Staff?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.unconfirmedStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.permanentStaff, "Permanent Staff?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.permanentStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.contractStaff, "Contract Staff?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.contractStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.expectedLengthOfService, "Expected Length Of Service In Months(After Confirmation):", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.TextBoxFor(m => m.NewFacilityRule.expectedLengthOfService, "", new { @class = "form-control", autocomplete = "off", onkeypress = "validateInput('[0-9]*')" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.downPaymentRequired, "Down Payment Required?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.downPaymentRequired, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.dhApproval, "Divisional Head Approval Required?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.dhApproval, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.mdApproval, "MD's Approval Required?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.mdApproval, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "NO", Value = "NO" },
+                                                                                   new SelectListItem { Text = "YES", Value = "YES" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group" id="checkboxes">
+                                                            <table>
+                                                                @Html.LabelFor(m => m.NewFacilityRule.dhApproval, "Tick All Applicable Grade(s)", new { @class = "col-md-4 control-label" })
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>@Html.CheckBox("SelectAll", false, new { id = "select_all" })</th>
+                                                                        <th>&nbsp;</th>
+                                                                        <th>Grade Name</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @for (int k = 0; k < Model.SalaryGrade.Count; k++)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.CheckBoxFor(x => x.SalaryGrade[k].isSelected, new { @class = "someDivId" })
+
+                                                                                @*@if{
+
+                                                                                    }*@
+                                                                                @Html.HiddenFor(x => x.SalaryGrade[k].isSelected)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(x => x.SalaryGrade[k].space)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(x => x.SalaryGrade[k].gradeName)
+                                                                                @Html.HiddenFor(x => x.SalaryGrade[k].gradeName)
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <br />
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <button id="btnSave"
+                                                                            class="btn btn-sm btn-primary pull-right"
+                                                                            data-pdsa-action="step2">
+                                                                        <i class="glyphicon glyphicon-forward"></i>
+                                                                        &nbsp;Next
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    @if (Model.IsStep2)
+                                                    {
+                                                        <h4> Step 2 of 4 </h4>
+                                                        <hr />
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.facilityName)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.confirmedStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.unconfirmedStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.permanentStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.contractStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.permanentStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.expectedLengthOfService)
+
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.mdApproval)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.dhApproval)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.downPaymentRequired)
+
+                                                        if (Model.IsBranch)
+                                                        {
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(m => m.NewFacilityRule.percentageRate, "Percentage Rate", new { @class = "col-md-4 control-label" })
+                                                                <div class="col-md-3 inputGroupContainer">
+                                                                    @Html.TextBoxFor(m => m.NewFacilityRule.percentageRate, new { @class = "form-control", @readonly = "readonly" })
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(m => m.NewFacilityRule.percentageRate, "Percentage Rate", new { @class = "col-md-4 control-label" })
+                                                                <div class="col-md-3 inputGroupContainer">
+                                                                    @Html.TextBoxFor(m => m.NewFacilityRule.percentageRate, "", new { @class = "form-control", autocomplete = "off", onkeypress = "validateInput('[0-9]*')" })
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.staffBranchPercentageRate, "Staff Branch's Percentage Rate", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.TextBoxFor(m => m.NewFacilityRule.staffBranchPercentageRate, "", new { @class = "form-control", autocomplete = "off", onkeypress = "validateInput('[0-9]*')" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.maximumAmountLimit, "Maximum Amount Limit:", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-1 inputGroupContainer">
+                                                                @Html.TextBoxFor(m => m.NewFacilityRule.maximumAmountLimit, "", new { @class = "form-control", autocomplete = "off", onkeypress = "validateInput('[0-9]*')" })
+                                                            </div>
+                                                            <div class="col-md-4 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.maximumAmountLimitOption, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                                   new SelectListItem { Text = "x Annual Housing Allowance", Value = "x Annual Housing Allowance" },
+                                                                                   new SelectListItem { Text = "% Of Gross Package", Value = "% Of Gross Package" },
+                                                                                   new SelectListItem { Text = "x Gross Package", Value = "x Gross Package" }
+                                                           },
+                                                                                  new { @class = "form-control" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.totalDeductionFromSalary, "Total Deduction From Monthly Salary(0.5 or 0.33):", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.totalDeductionFromSalary, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                       new SelectListItem { Text = "1/2", Value = "1/2" },
+                                                                       new SelectListItem { Text = "1/3", Value = "1/3" },
+                                                                       new SelectListItem { Text = "2/3", Value = "2/3" }
+                                                                },
+                                                                      new { @class = "form-control" })
+                                                            </div>
+                                                            <span class="col-md-3 control-label"><b>Deduction From Monthly Salary(0.5 = 1/2, 0.33 = 1/3)</b></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.minimumTenor, "Minimum Tenor(In Months)", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.TextBoxFor(m => m.NewFacilityRule.minimumTenor, "", new { @class = "form-control", minlength = 2, autocomplete = "off", onkeypress = "validateInput('[0-9]*')" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.maximumTenor, "Maximum Tenor(In Months)", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.TextBoxFor(m => m.NewFacilityRule.maximumTenor, "", new { @class = "form-control", autocomplete = "off", maxlength = 4, onkeypress = "validateInput('[0-9]*')" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.undertakingFormNeeded, "Undertaking Form Required?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.undertakingFormNeeded, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                       new SelectListItem { Text = "NO", Value = "NO" },
+                                                                       new SelectListItem { Text = "YES", Value = "YES" }
+                                                                },
+                                                                      new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.NewFacilityRule.supervisorEndorsementNeeded, "Supervisor Satisfactory Endorsement Required?", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.NewFacilityRule.supervisorEndorsementNeeded, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                                                       new SelectListItem { Text = "NO", Value = "NO" },
+                                                                       new SelectListItem { Text = "YES", Value = "YES" }
+                                                                },
+                                                                      new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                        <br />
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+
+                                                                <div class="col-sm-12">
+                                                                    <button id="btnSave"
+                                                                            class="btn btn-sm btn-primary pull-left"
+                                                                            data-pdsa-action="get">
+                                                                        <i class="glyphicon glyphicon-backward"></i>
+                                                                        &nbsp;Back
+                                                                    </button>
+
+                                                                    <button id="btnSave"
+                                                                            class="btn btn-sm btn-primary pull-right"
+                                                                            data-pdsa-action="step3">
+                                                                        <i class="glyphicon glyphicon-forward"></i>
+                                                                        &nbsp;Next
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    @if (Model.IsStep3)
+                                                    {
+                                                        <h4> Step 3 of 4 </h4>
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.facilityName)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.confirmedStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.unconfirmedStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.permanentStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.contractStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.permanentStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.expectedLengthOfService)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.percentageRate)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.staffBranchPercentageRate)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.minimumAnnualGrossAllowance)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.minimumAnnualHousingAllowance)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.maximumAmountLimitOption)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.maximumAmountLimit)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.totalDeductionFromSalary)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.minimumTenor)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.maximumTenor)
+
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.dhApproval)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.mdApproval)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.downPaymentRequired)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.undertakingFormNeeded)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.searchAuthorityNeeded)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.supervisorEndorsementNeeded)
+
+                                                        @*<div class="panel panel-primary">
+                                                            <div class="panel-body">*@
+                                                        <div class="form-group" id="checkboxes">
+                                                            <table>
+                                                                @Html.LabelFor(m => m.NewFacilityRule.dhApproval, "Select All Applicable Document(s)", new { @class = "col-md-4 control-label" })
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>@Html.CheckBox("SelectAll", false, new { id = "select_all" })</th>
+                                                                        <th>&nbsp;</th>
+                                                                        <th>Document Name</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @for (int k = 0; k < Model.MyDocuments.Count; k++)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.CheckBoxFor(x => x.MyDocuments[k].isSelected, new { @class = "someDivId" })
+                                                                                @Html.HiddenFor(x => x.MyDocuments[k].documentName)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(x => x.MyDocuments[k].space)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(x => x.MyDocuments[k].documentName)
+                                                                                @Html.HiddenFor(x => x.MyDocuments[k].documentName)
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        @*</div>
+                                                            </div>*@
+                                                        <br />
+                                                        <br />
+
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+
+                                                                <button id="btnSave"
+                                                                        class="btn btn-sm btn-primary pull-right"
+                                                                        data-pdsa-action="step4">
+                                                                    <i class="glyphicon glyphicon-forward"></i>
+                                                                    &nbsp;Next
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    @if (Model.IsStep4)
+                                                    {
+                                                        <h4> Step 4 of 4 </h4>
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.facilityName)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.confirmedStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.unconfirmedStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.permanentStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.contractStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.permanentStaff)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.expectedLengthOfService)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.percentageRate)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.staffBranchPercentageRate)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.minimumAnnualGrossAllowance)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.minimumAnnualHousingAllowance)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.maximumAmountLimitOption)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.maximumAmountLimit)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.totalDeductionFromSalary)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.minimumTenor)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.maximumTenor)
+
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.dhApproval)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.mdApproval)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.downPaymentRequired)
+
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.undertakingFormNeeded)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.searchAuthorityNeeded)
+                                                        @Html.HiddenFor(model => model.NewFacilityRule.supervisorEndorsementNeeded)
+
+                                                        <div class="form-group" id="checkboxes">
+                                                            <table>
+                                                                @Html.LabelFor(m => m.NewFacilityRule.dhApproval, "Tick All Applicable Form(s)", new { @class = "col-md-4 control-label" })
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>@Html.CheckBox("SelectAll", false, new { id = "select_all" })</th>
+                                                                        <th>&nbsp;</th>
+                                                                        <th>Form Name</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @for (int k = 0; k < Model.MyForms.Count; k++)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.CheckBoxFor(x => x.MyForms[k].isSelected, new { @class = "someDivId" })
+                                                                                @Html.HiddenFor(x => x.MyForms[k].formName)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(x => x.MyForms[k].space)
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(x => x.MyForms[k].formName)
+                                                                                @Html.HiddenFor(x => x.MyForms[k].formName)
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+                                                        <br />
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <button id="btnSave"
+                                                                            class="btn btn-sm btn-primary"
+                                                                            data-pdsa-action="submit">
+                                                                        <i class="glyphicon glyphicon-floppy-disk"></i>
+                                                                        &nbsp;Submit
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+
+                                                </fieldset>
+                                            </div>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            }
+        </div>
+    </div>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(document).ajaxStart(function () {
+                $("#loading").show();
+            });
+            $(document).ajaxStop(function () {
+                $("#loading").hide();
+            });
+            $("[data-pdsa-action]").on("click", function (e) {
+                $("#loading").show();
+                e.preventDefault();
+                $("#EventCommand").val($(this).data("pdsa-action"));
+                $("#EventArgument").val($(this).attr("data-pdsa-val"));
+                $("form").submit();
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        console.log('Submission was successful.');
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log('An error occurred.');
+                        console.log(data);
+                    },
+                });
+                $("#loading").hide();
+            });
+        });
+    </script>
+    <script type="text/javascript" language="javascript">
+        function validateInput(regexString) {
+            var theEvent = window.event || event;
+            var key = theEvent.keyCode || theEvent.which;
+            if (key >= 46) {
+                key = String.fromCharCode(key);
+                var regex = new RegExp("^" + regexString + "$");
+                if (!regex.test(key)) {
+                    theEvent.returnValue = false;
+                    if (theEvent.preventDefault) {
+                        theEvent.preventDefault();
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function add_row(table_id) {
+            var table = document.getElementById(table_id);
+
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+
+            var colCount = table.rows[0].cells.length;
+            //alert(rowCount);
+            //alert(colCount);
+
+            for (var i = 0; i < colCount; i++) {
+
+                var newcell = row.insertCell(i);
+
+                newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                // $(newcell).find("select")[0].id = $(newcell).find("select")[0].id + rowCount;
+                //alert(newcell.innerHTML);
+                //alert(newcell.childNodes[0].type);
+
+                switch (newcell.childNodes[1].nodeName) {
+                    case "DIV":
+                        //newcell.childNodes[0].value = rowCount;
+                        $(newcell).find("select")[0].id = $(newcell).find("select")[0].id + rowCount;
+                        break;
+                    //case "#checkbox":
+                    //    newcell.childNodes[0].checked = false;
+                    //    break;
+                    case "BUTTON":
+                        // newcell.childNodes[0].selectedIndex = 0;
+                        $(newcell).children()[0].id = $(newcell).children()[0].id + rowCount;
+                        break;
+                }
+            }
+        }
+        function remove_row(table_id) {
+            var table = document.getElementById(table_id);
+
+            var rowCount = table.rows.length;
+
+            var row = table.deleteRow(rowCount);
+
+            var colCount = table.rows[0].cells.length;
+
+            for (var i = 0; i < colCount; i--) {
+
+                var newcell = row.insertCell(i);
+
+                newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                // $(newcell).find("select")[0].id = $(newcell).find("select")[0].id + rowCount;
+                //alert(newcell.innerHTML);
+                //alert(newcell.childNodes[0].type);
+
+                switch (newcell.childNodes[1].nodeName) {
+                    case "DIV":
+                        //newcell.childNodes[0].value = rowCount;
+                        $(newcell).find("select")[0].id = $(newcell).find("select")[0].id + rowCount;
+                        break;
+                    //case "#checkbox":
+                    //    newcell.childNodes[0].checked = false;
+                    //    break;
+                    case "BUTTON":
+                        // newcell.childNodes[0].selectedIndex = 0;
+                        $(newcell).children()[0].id = $(newcell).children()[0].id + rowCount;
+                        break;
+                }
+            }
+        }
+    </script>
+
+    <script>
+        $(function () {
+            $('#select_all').click(function () {
+                $('.someDivId').prop('checked', this.checked)
+            });
+        });
+    </script>
+}

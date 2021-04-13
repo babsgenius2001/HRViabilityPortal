@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="JaizRoleManagerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RoleManagerService.Models" />
+      <xsd:import schemaLocation="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RoleManagerService.Memo" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IJaizRoleManagerService_ValidateADUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateADUser" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_ValidateADUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateADUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_UserInRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserInRole" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_UserInRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserInRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetRolesForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesForUser" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetRolesForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetUsersInRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInRole" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetUsersInRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetAllRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRoles" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetAllRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_LoginOnly_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginOnly" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_LoginOnly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginOnlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetAccountDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountDetails" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetAccountDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetAccountList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountList" />
+  </wsdl:message>
+  <wsdl:message name="IJaizRoleManagerService_GetAccountList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IJaizRoleManagerService">
+    <wsdl:operation name="ValidateADUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/ValidateADUser" message="tns:IJaizRoleManagerService_ValidateADUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/ValidateADUserResponse" message="tns:IJaizRoleManagerService_ValidateADUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/UserInRole" message="tns:IJaizRoleManagerService_UserInRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/UserInRoleResponse" message="tns:IJaizRoleManagerService_UserInRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetRolesForUser" message="tns:IJaizRoleManagerService_GetRolesForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetRolesForUserResponse" message="tns:IJaizRoleManagerService_GetRolesForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetUsersInRole" message="tns:IJaizRoleManagerService_GetUsersInRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetUsersInRoleResponse" message="tns:IJaizRoleManagerService_GetUsersInRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetAllRoles" message="tns:IJaizRoleManagerService_GetAllRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetAllRolesResponse" message="tns:IJaizRoleManagerService_GetAllRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetUser" message="tns:IJaizRoleManagerService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetUserResponse" message="tns:IJaizRoleManagerService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginOnly">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/LoginOnly" message="tns:IJaizRoleManagerService_LoginOnly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/LoginOnlyResponse" message="tns:IJaizRoleManagerService_LoginOnly_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetAccountDetails" message="tns:IJaizRoleManagerService_GetAccountDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetAccountDetailsResponse" message="tns:IJaizRoleManagerService_GetAccountDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetAccountList" message="tns:IJaizRoleManagerService_GetAccountList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IJaizRoleManagerService/GetAccountListResponse" message="tns:IJaizRoleManagerService_GetAccountList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IJaizRoleManagerService" type="tns:IJaizRoleManagerService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateADUser">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/ValidateADUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInRole">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/UserInRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesForUser">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/GetRolesForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInRole">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/GetUsersInRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/GetAllRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginOnly">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/LoginOnly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/GetAccountDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountList">
+      <soap:operation soapAction="http://tempuri.org/IJaizRoleManagerService/GetAccountList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JaizRoleManagerService">
+    <wsdl:port name="BasicHttpBinding_IJaizRoleManagerService" binding="tns:BasicHttpBinding_IJaizRoleManagerService">
+      <soap:address location="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

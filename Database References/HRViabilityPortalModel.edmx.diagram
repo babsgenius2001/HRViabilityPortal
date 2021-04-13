@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a2503b8318734692aa60b239dcc54bbc" Name="Diagram1">
+        <EntityTypeShape EntityType="HRViabilityPortalModel.AuditLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BaiMuajjalDocumentsTable" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BaiMuajjalFormsTable" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BaiMuajjalGradesTable" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BMDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BranchDocumentsTable" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BranchFormsTable" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.BranchGradesTable" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.EmailAccount" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.EmailBox" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Facility" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.FacilityDocument" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.FacilityForm" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.FacilityUndertaking" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HomeFinanceDocumentsTable" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HomeFinanceFormsTable" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HomeFinanceGradesTable" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HRBranchesMaster" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HRFacilityMaster" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HRPayroll" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.IjaraServiceDocumentsTable" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.IjaraServiceFormsTable" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.IjaraServiceGradesTable" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.MurabahaDocumentsTable" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.MurabahaFormsTable" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.MurabahaGradesTable" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.ReqHistory" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.StaffGradesSalary" Width="1.5" PointX="15.375" PointY="3.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.StaffGradesAllowance" Width="1.5" PointX="7.375" PointY="15.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HomeFinance18PercentDocumentsTable" Width="1.5" PointX="15.75" PointY="7.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HomeFinance18PercentFormsTable" Width="1.5" PointX="15.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.HomeFinance18PercentGradesTable" Width="1.5" PointX="15.75" PointY="13.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Murabaha18PercentDocumentsTable" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Murabaha18PercentFormsTable" Width="1.5" PointX="13.75" PointY="16.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Murabaha18PercentGradesTable" Width="1.5" PointX="15.75" PointY="16.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Murabaha5PercentDocumentsTable" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Murabaha5PercentFormsTable" Width="1.5" PointX="17.75" PointY="3.75" />
+        <EntityTypeShape EntityType="HRViabilityPortalModel.Murabaha5PercentGradesTable" Width="1.5" PointX="17.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

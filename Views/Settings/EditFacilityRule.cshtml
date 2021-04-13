@@ -1,0 +1,405 @@
+﻿@model HRViabilityPortal.ViewModels.EditFacilityRuleViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Edit Facility Rules Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("EditFacilityRule", "Settings", FormMethod.Post))
+{
+    <!--BEGIN HIDDEN FIELD AREA-->
+    @Html.HiddenFor(m => m.EventCommand)
+    @Html.HiddenFor(m => m.EventArgument)
+    @Html.HiddenFor(m => m.Mode)
+    <!--END HIDDEN FIELD AREA-->
+    <!--start Loading panel-->
+    <div id="loading" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class=" modal-title">Loading... </h4>
+                </div>
+                <div class=" modal-body">
+                    <div class=" progress progress-striped active">
+                        <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--start Loading panel-->
+
+    <!--BEGIN ADD AREA HERE-->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!Model.IsValid)
+                    {
+                        <div class="alert alert-danger alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">close</span>
+                            </button>
+                            @Html.ValidationSummary(false)
+                        </div>
+                    }
+                    @if (TempData["Msg"] != null)
+                    {
+                        <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                x
+                            </button>
+                            @TempData["Msg"].ToString()
+                        </div>
+                    }
+                </div>
+            </div>
+            @if (Model.IsDetailAreaVisible)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h4><center><font color="white">Facility Rules Details View</font></center></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label">
+                            ID
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.id, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Facility Name
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.facilityName, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Confirmed Staff?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.confirmedStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Unconfirmed Staff?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.unconfirmedStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Permanent Staff?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.permanentStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Contract Staff?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.contractStaff, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Expected Length Of Service
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.expectedLengthOfService, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Maximum Amount Limit Option
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.maximumAmountLimitOption, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                            new SelectListItem { Text = "x Annual Housing Allowance", Value = "x Annual Housing Allowance" },
+                                                                                   new SelectListItem { Text = "% Of Gross Package", Value = "% Of Gross Package" },
+                                                                                   new SelectListItem { Text = "x Gross Package", Value = "x Gross Package" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Minimum Tenor
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.minimumTenor, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Percentage Rate
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.percentageRate, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Staff Branch Percentage Rate
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.staffBranchPercentageRate, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Maximum Tenor
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.Entity.maximumTenor, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Undertaking Form Needed?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.undertakingFormNeeded, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Supervisor Endorsement Needed?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.supervisorEndorsementNeeded, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Search Authority Needed?
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entity.searchAuthorityNeeded, new List<SelectListItem> { new SelectListItem { Text = "==Select==", Value = "" },
+                                           new SelectListItem { Text = "NO", Value = "NO" },
+                                           new SelectListItem { Text = "YES", Value = "YES" }
+                   },
+                                          new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label ">
+                            Comments
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.TextAreaFor(m => m.Entity.facilityRulesComments, new { @class = "form-control", @rows = 4 })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-sm-10 control-label">
+                            Required Documents:
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+
+                        <table>
+
+                            @for (int k = 0; k < Model.DocumentsNeeded.Count; k++)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            @Html.DisplayFor(x => x.DocumentsNeeded[k].space)
+                                        </td>
+                                        <td class="form-control col-md-4 control-label">
+                                            @Html.DisplayFor(x => x.DocumentsNeeded[k].documentName)
+                                            @Html.HiddenFor(x => x.DocumentsNeeded[k].documentName)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+
+                    </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="col-sm-10 control-label">
+
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="btnSave"
+                                    class="btn btn-sm btn-primary"
+                                    data-pdsa-action="save">
+                                <i class="glyphicon
+           glyphicon-floppy-disk"></i>
+                                &nbsp;Save
+                            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button id="btnCancel"
+                                    class="btn btn-sm btn-primary"
+                                    formnovalidate="formnovalidate"
+                                    data-pdsa-action="cancel">
+                                <i class="glyphicon
+           glyphicon-remove-circle"></i>
+                                &nbsp;Cancel
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="col-sm-10 control-label ">
+
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+
+                    }
+                    @if (Model.IsListAreaVisible)
+                    {
+                        <br />
+
+                        <h4 style="color: white"><center>Facility Rules Lists</center></h4>
+                        <!-- BEGIN GRID AREA -->
+
+
+                        <div class="table-responsive">
+                            <br />
+                            <br />
+                            <table class="table table-condensed table-bordered table-striped table-hover" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Facility Name</th>
+                                        <th>Percentage Rate</th>
+                                        <th>Staff Branch Percentage Rate</th>
+                                        <th>Maximum Amount Limit(%)</th>
+                                        <th>Maximum Amount Limit Option</th>
+                                        <th>Maximum Tenor</th>
+                                        <th>Active?</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model.FacilityRules)
+                                    {
+                                        <tr>
+                                            <td>@item.id</td>
+                                            <td>@item.facilityName</td>
+                                            <td>@item.percentageRate</td>
+                                            <td>@item.staffBranchPercentageRate</td>
+                                            <td>@item.maximumAmountLimit</td>
+                                            <td>@item.maximumAmountLimitOption</td>
+                                            <td>@item.maximumTenor</td>
+                                            <td>@item.active</td>
+                                            <td>
+                                                <button id="btnViewDetail" class="btn btn-primary waves-effect waves-light"
+                                                        data-pdsa-action="edit" data-pdsa-val="@item.id">
+                                                    <i class="glyphicon glyphicon-edit"></i>&nbsp;Edit
+                                                </button>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @if (Model.PagedList != null)
+                            {
+                                @Html.PagedListPager(Model.PagedList, page => Url.Action("Index",
+                    new { page }))
+                            }
+
+                        </div>
+                        <!-- END GRID AREA -->
+                    }
+            </section>
+    </div>
+}
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            $(document).ajaxStart(function () {
+                $("#loading").show();
+            });
+            $(document).ajaxStop(function () {
+                $("#loading").hide();
+            });
+
+            $("[data-pdsa-action]").on("click", function (e) {
+                $("#loading").show();
+                e.preventDefault();
+
+                $("#EventCommand").val(
+                    $(this).data("pdsa-action"));
+
+                $("#EventArgument").val(
+                    $(this).attr("data-pdsa-val"));
+
+                $("form").submit();
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        console.log('Submission was successful.');
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log('An error occurred.');
+                        console.log(data);
+                    },
+                });
+                $("#loading").hide();
+            });
+        });
+    </script>
+
+}

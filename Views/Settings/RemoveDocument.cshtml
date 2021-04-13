@@ -1,0 +1,164 @@
+﻿@model HRViabilityPortal.ViewModels.RemoveDocumentsViewModel
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Remove Documents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("RemoveDocument", "Settings", FormMethod.Post))
+{
+    <!--BEGIN HIDDEN FIELD AREA-->
+    @Html.HiddenFor(m => m.EventCommand)
+    @Html.HiddenFor(m => m.EventArgument)
+    @Html.HiddenFor(m => m.Mode)
+    <!--END HIDDEN FIELD AREA-->
+    <!--start Loading panel-->
+    <div id="loading" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class=" modal-title">Loading... </h4>
+                </div>
+                <div class=" modal-body">
+                    <div class=" progress progress-striped active">
+                        <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--start Loading panel-->
+    <!--BEGIN ADD AREA HERE-->
+    <div class="panel-default panel-heading-custom">
+        <div class="panel-heading">
+
+            <h1 class="panel-title"><center>Remove Facility Documents</center></h1>
+        </div>
+        <div class="panel-body">
+            <!--BEGIN ERROR MESSAGE AREA-->
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!Model.IsValid)
+                    {
+                        <div class="alert alert-danger alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">close</span>
+                            </button>
+                            @Html.ValidationSummary(false)
+                        </div>
+                    }
+                    @if (TempData["Msg"] != null)
+                    {
+                        <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                x
+                            </button>
+                            @TempData["Msg"].ToString()
+                        </div>
+                    }
+                </div>
+            </div>
+            @if (Model.IsDetailAreaVisible)
+            {
+
+                <div class="content-wrapper">
+                    <section class="content">
+                        <div class="container">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="well form-horizontal">
+                                                <fieldset>
+                                                    @if (Model.IsStep1)
+                                                    {
+                                                        <h4>New Request</h4>
+                                                        <hr />
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.FacilityReq.facilityName, "Facility Name:", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">    
+                                                                
+                                                                @Html.DropDownListFor(m => m.FacilityReq.facilityName, new SelectList(Model.ListOfFacilities, "Text", "Value"), new { @class = "form-control", id = "FacilityType" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.documentName, "Document to be removed from Facility:", new { @class = "col-md-4 control-label" })
+                                                            <div class="col-md-3 inputGroupContainer">
+                                                                @Html.DropDownListFor(m => m.documentName, new SelectList(Model.DocumentsList, "Text", "Value"), new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+
+                                                        <br />
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <button id="btnSave"
+                                                                            class="btn btn-sm btn-primary pull-right"
+                                                                            data-pdsa-action="submit">
+                                                                        <i class="glyphicon glyphicon-save"></i>
+                                                                        &nbsp;Submit
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+
+                                                </fieldset>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            }
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(document).ajaxStart(function () {
+                $("#loading").show();
+            });
+            $(document).ajaxStop(function () {
+                $("#loading").hide();
+            });
+            $("[data-pdsa-action]").on("click", function (e) {
+                $("#loading").show();
+                e.preventDefault();
+                $("#EventCommand").val($(this).data("pdsa-action"));
+                $("#EventArgument").val($(this).attr("data-pdsa-val"));
+                $("form").submit();
+                $.ajax({
+                    type: frm.attr('method'),
+                    url: frm.attr('action'),
+                    data: frm.serialize(),
+                    success: function (data) {
+                        console.log('Submission was successful.');
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log('An error occurred.');
+                        console.log(data);
+                    },
+                });
+                $("#loading").hide();
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+            $("#datepicker2").datepicker();
+            $("#datepicker3").datepicker();
+            $("#datepicker4").datepicker("option", "dateFormat", $(this).val());
+        });
+    </script>
+
+}

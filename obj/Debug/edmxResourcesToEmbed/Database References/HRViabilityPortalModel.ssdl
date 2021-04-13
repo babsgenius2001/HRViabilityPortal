@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRViabilityPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AuditLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar(max)" />
+    <Property Name="ActivityPerformed" Type="varchar(max)" />
+    <Property Name="UserName" Type="varchar(max)" />
+    <Property Name="DateOfActivity" Type="datetime" />
+    <Property Name="IpAddress" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="BaiMuajjalDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="BaiMuajjalFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="BaiMuajjalGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="BMDetails">
+    <Key>
+      <PropertyRef Name="staffId" />
+    </Key>
+    <Property Name="staffId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="staffName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="branchName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="branchCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emailAddress" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BranchDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="BranchFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="BranchGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="EmailAccount">
+    <Key>
+      <PropertyRef Name="emailID" />
+    </Key>
+    <Property Name="emailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emailPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="emailGateway" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emailUserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="emailStatus" Type="int" Nullable="false" />
+    <Property Name="emailINTBK" Type="int" />
+  </EntityType>
+  <EntityType Name="EmailBox">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="EmailContent" Type="varchar(max)" />
+    <Property Name="HasAttachment" Type="int" />
+    <Property Name="Attachment" Type="varchar" MaxLength="50" />
+    <Property Name="EmailStatus" Type="varchar" MaxLength="5" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="Platform" Type="varchar" MaxLength="50" />
+    <Property Name="FromAddress" Type="varchar" MaxLength="50" />
+    <Property Name="Subject" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Facility">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="facilityName" Type="varchar(max)" Nullable="false" />
+    <Property Name="confirmedStaff" Type="varchar" MaxLength="3" />
+    <Property Name="unconfirmedStaff" Type="varchar" MaxLength="3" />
+    <Property Name="permanentStaff" Type="varchar" MaxLength="3" />
+    <Property Name="contractStaff" Type="varchar" MaxLength="3" />
+    <Property Name="expectedLengthOfService" Type="int" />
+    <Property Name="percentageRate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="staffBranchPercentageRate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="minimumAnnualGrossAllowance" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="minimumAnnualHousingAllowance" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="maximumAmountLimit" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="totalDeductionFromSalary" Type="varchar" MaxLength="10" />
+    <Property Name="minimumTenor" Type="int" />
+    <Property Name="maximumTenor" Type="int" />
+    <Property Name="undertakingFormNeeded" Type="varchar" MaxLength="3" />
+    <Property Name="supervisorEndorsementNeeded" Type="varchar" MaxLength="3" />
+    <Property Name="searchAuthorityNeeded" Type="varchar" MaxLength="3" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+    <Property Name="facilityComments" Type="varchar(max)" />
+    <Property Name="document1" Type="varchar(max)" />
+    <Property Name="document2" Type="varchar(max)" />
+    <Property Name="document3" Type="varchar(max)" />
+    <Property Name="document4" Type="varchar(max)" />
+    <Property Name="document5" Type="varchar(max)" />
+    <Property Name="document6" Type="varchar(max)" />
+    <Property Name="document7" Type="varchar(max)" />
+    <Property Name="document8" Type="varchar(max)" />
+    <Property Name="document9" Type="varchar(max)" />
+    <Property Name="document10" Type="varchar(max)" />
+    <Property Name="form1" Type="varchar(max)" />
+    <Property Name="form2" Type="varchar(max)" />
+    <Property Name="form3" Type="varchar(max)" />
+    <Property Name="form4" Type="varchar(max)" />
+    <Property Name="form5" Type="varchar(max)" />
+    <Property Name="form6" Type="varchar(max)" />
+    <Property Name="form7" Type="varchar(max)" />
+    <Property Name="form8" Type="varchar(max)" />
+    <Property Name="form9" Type="varchar(max)" />
+    <Property Name="form10" Type="varchar(max)" />
+    <Property Name="facilityRulesComments" Type="varchar(max)" />
+    <Property Name="facilityRulesSet" Type="varchar" MaxLength="1" />
+    <Property Name="maximumAmountLimitOption" Type="varchar(max)" />
+    <Property Name="mdApproval" Type="varchar" MaxLength="3" />
+    <Property Name="downPaymentRequired" Type="varchar" MaxLength="3" />
+    <Property Name="dhApproval" Type="varchar" MaxLength="3" />
+    <Property Name="customField1" Type="varchar(max)" />
+    <Property Name="customField2" Type="varchar(max)" />
+    <Property Name="customField3" Type="varchar(max)" />
+    <Property Name="customField4" Type="varchar(max)" />
+    <Property Name="customField5" Type="varchar(max)" />
+    <Property Name="customField6" Type="varchar(max)" />
+    <Property Name="customField7" Type="varchar(max)" />
+    <Property Name="customField8" Type="varchar(max)" />
+    <Property Name="customField9" Type="varchar(max)" />
+    <Property Name="customField10" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="FacilityDocuments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" Nullable="false" />
+    <Property Name="active" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="isSelected" Type="bit" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="FacilityForms">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" Nullable="false" />
+    <Property Name="active" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="isSelected" Type="bit" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="FacilityUndertaking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="undertakingType" Type="varchar" MaxLength="50" />
+    <Property Name="active" Type="varchar" MaxLength="3" />
+    <Property Name="isSelected" Type="bit" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="HomeFinance18PercentDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="HomeFinance18PercentFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="HomeFinance18PercentGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="HomeFinanceDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="HomeFinanceFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="HomeFinanceGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="HRBranchesMaster">
+    <Key>
+      <PropertyRef Name="BranchCode" />
+    </Key>
+    <Property Name="BranchCode" Type="int" Nullable="false" />
+    <Property Name="BranchName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="HRFacilityMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="requestReferenceNumber" Type="varchar(max)" Nullable="false" />
+    <Property Name="staffId" Type="varchar" MaxLength="50" />
+    <Property Name="accountNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cif" Type="int" />
+    <Property Name="accountName" Type="varchar(max)" Nullable="false" />
+    <Property Name="facilityName" Type="varchar(max)" />
+    <Property Name="salaryGrade" Type="varchar(max)" />
+    <Property Name="mobileNumber" Type="varchar" MaxLength="11" />
+    <Property Name="maritalStatus" Type="varchar" MaxLength="50" />
+    <Property Name="dateOfBirth" Type="varchar" MaxLength="50" />
+    <Property Name="staffEmailAddress" Type="varchar(max)" />
+    <Property Name="state" Type="varchar" MaxLength="50" />
+    <Property Name="natureOfEmployment" Type="varchar(max)" Nullable="false" />
+    <Property Name="numberOfMonthsInService" Type="int" />
+    <Property Name="jobFunction" Type="varchar(max)" />
+    <Property Name="branch" Type="varchar(max)" />
+    <Property Name="branchCode" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="varchar(max)" />
+    <Property Name="grossAnnualSalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="netMonthlySalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="annualHousingAllowance" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="outstandingLoanAmount" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="noOfMonthsRemainingOnfacility" Type="int" />
+    <Property Name="amountRequested" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="downPaymentContribution" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="repaymentAmount" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="percentageRate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="tenor" Type="int" Nullable="false" />
+    <Property Name="loanPurpose" Type="varchar(max)" Nullable="false" />
+    <Property Name="assetDescription" Type="varchar(max)" />
+    <Property Name="vendorsName" Type="varchar(max)" />
+    <Property Name="vendorsAddress" Type="varchar(max)" />
+    <Property Name="vendorsPhoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="locationOfAsset" Type="varchar(max)" />
+    <Property Name="vehicleModel" Type="varchar(max)" />
+    <Property Name="yearOfManufacture" Type="varchar(max)" />
+    <Property Name="modeOfDelivery" Type="varchar(max)" />
+    <Property Name="quotationEnclosed" Type="varchar(max)" />
+    <Property Name="typeOfProperty" Type="varchar" MaxLength="50" />
+    <Property Name="propertyDescription" Type="varchar(max)" />
+    <Property Name="titleDocumentType" Type="varchar(max)" />
+    <Property Name="nameOfDeveloper" Type="varchar(max)" />
+    <Property Name="addressOfDeveloper" Type="varchar(max)" />
+    <Property Name="phoneNumberOfDeveloper" Type="varchar" MaxLength="50" />
+    <Property Name="locationOfProperty" Type="varchar(max)" />
+    <Property Name="serviceDescription" Type="varchar(max)" />
+    <Property Name="serviceProviderName" Type="varchar(max)" />
+    <Property Name="serviceProviderAddress" Type="varchar(max)" />
+    <Property Name="servicePhoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="requestDate" Type="datetime" />
+    <Property Name="requestStatus" Type="varchar" MaxLength="50" />
+    <Property Name="initiator" Type="varchar(max)" />
+    <Property Name="initiatorTimestamp" Type="datetime" />
+    <Property Name="staffSupervisor" Type="varchar" MaxLength="50" />
+    <Property Name="hrApprover1" Type="varchar(max)" />
+    <Property Name="hrApprover1ApproveReject" Type="varchar(max)" />
+    <Property Name="hrApprover1Comment" Type="varchar(max)" />
+    <Property Name="hrApprover1Timestamp" Type="datetime" />
+    <Property Name="hrApprover2" Type="varchar(max)" />
+    <Property Name="hrApprover2Timestamp" Type="datetime" />
+    <Property Name="hrApprover2ApproveReject" Type="varchar(max)" />
+    <Property Name="hrApprover2Comment" Type="varchar(max)" />
+    <Property Name="bmBranchOfRequest" Type="varchar(max)" />
+    <Property Name="bmBranchOfRequestTimestamp" Type="datetime" />
+    <Property Name="bmBranchOfRequestApproveReject" Type="varchar(max)" />
+    <Property Name="bmBranchOfRequestComment" Type="varchar(max)" />
+    <Property Name="mdApprover" Type="varchar(max)" />
+    <Property Name="mdApproverTimestamp" Type="datetime" />
+    <Property Name="mdApproverApproveReject" Type="varchar(max)" />
+    <Property Name="mdApproverComment" Type="varchar(max)" />
+    <Property Name="fileName1" Type="varchar(max)" />
+    <Property Name="fileContentType1" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData1" Type="nvarchar(max)" />
+    <Property Name="fileName2" Type="varchar(max)" />
+    <Property Name="fileContentType2" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData2" Type="nvarchar(max)" />
+    <Property Name="fileName3" Type="varchar(max)" />
+    <Property Name="fileContentType3" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData3" Type="nvarchar(max)" />
+    <Property Name="fileName4" Type="varchar(max)" />
+    <Property Name="fileContentType4" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData4" Type="nvarchar(max)" />
+    <Property Name="fileName5" Type="varchar(max)" />
+    <Property Name="fileContentType5" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData5" Type="nvarchar(max)" />
+    <Property Name="fileName6" Type="varchar(max)" />
+    <Property Name="fileContentType6" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData6" Type="nvarchar(max)" />
+    <Property Name="hrApprover1RejectComment" Type="varchar(max)" />
+    <Property Name="hrApprover2RejectComment" Type="varchar(max)" />
+    <Property Name="mdApproverRejectComment" Type="varchar(max)" />
+    <Property Name="bmApproverRejectComment" Type="varchar(max)" />
+    <Property Name="dhApproverRejectComment" Type="varchar(max)" />
+    <Property Name="dhApprover" Type="varchar(max)" />
+    <Property Name="dhApproverTimestamp" Type="datetime" />
+    <Property Name="dhApproverApproveReject" Type="varchar" MaxLength="50" />
+    <Property Name="dhApproverComment" Type="varchar(max)" />
+    <Property Name="hasExistingVehicleLoan" Type="varchar" MaxLength="3" />
+    <Property Name="hasExistingMortgageLoan" Type="varchar" MaxLength="3" />
+    <Property Name="dateOfEmployment" Type="varchar" MaxLength="50" />
+    <Property Name="customField1" Type="varchar(max)" />
+    <Property Name="customField1Data" Type="varchar(max)" />
+    <Property Name="customField2" Type="varchar(max)" />
+    <Property Name="customField2Data" Type="varchar(max)" />
+    <Property Name="customField3" Type="varchar(max)" />
+    <Property Name="customField3Data" Type="varchar(max)" />
+    <Property Name="customField4" Type="varchar(max)" />
+    <Property Name="customField4Data" Type="varchar(max)" />
+    <Property Name="customField5" Type="varchar(max)" />
+    <Property Name="customField5Data" Type="varchar(max)" />
+    <Property Name="customField6" Type="varchar(max)" />
+    <Property Name="customField6Data" Type="varchar(max)" />
+    <Property Name="customField7" Type="varchar(max)" />
+    <Property Name="customField7Data" Type="varchar(max)" />
+    <Property Name="customField8" Type="varchar(max)" />
+    <Property Name="customField8Data" Type="varchar(max)" />
+    <Property Name="customField9" Type="varchar(max)" />
+    <Property Name="customField9Data" Type="varchar(max)" />
+    <Property Name="customField10" Type="varchar(max)" />
+    <Property Name="customField10Data" Type="varchar(max)" />
+    <Property Name="queueId" Type="int" />
+    <Property Name="fileName7" Type="varchar(max)" />
+    <Property Name="fileContentType7" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData7" Type="nvarchar(max)" />
+    <Property Name="fileName8" Type="varchar(max)" />
+    <Property Name="fileContentType8" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData8" Type="varchar(max)" />
+    <Property Name="fileName9" Type="varchar(max)" />
+    <Property Name="fileContentType9" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData9" Type="varchar(max)" />
+    <Property Name="fileName10" Type="varchar(max)" />
+    <Property Name="fileContentType10" Type="nvarchar" MaxLength="200" />
+    <Property Name="fileData10" Type="varchar(max)" />
+    <Property Name="documentEmailStatus" Type="varchar(max)" />
+    <Property Name="documentEmailSentTime" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="HRPayroll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GradeName" Type="varchar(max)" />
+    <Property Name="AnnualGrossPackage" Type="varchar(max)" />
+    <Property Name="AnnualHousingAllowance" Type="varchar(max)" />
+    <Property Name="MonthlyGrossPackage" Type="varchar(max)" />
+    <Property Name="MonthlyNetPackage" Type="varchar(max)" />
+    <Property Name="PensionsContribution" Type="varchar(max)" />
+    <Property Name="PAYE" Type="varchar(max)" />
+    <Property Name="NHF" Type="varchar(max)" />
+    <Property Name="TotalAnnualDeduction" Type="varchar(max)" />
+    <Property Name="TotalMonthlyDeduction" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="IjaraServiceDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="IjaraServiceFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="IjaraServiceGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Murabaha18PercentDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Murabaha18PercentFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Murabaha18PercentGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Murabaha5PercentDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Murabaha5PercentFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Murabaha5PercentGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="MurabahaDocumentsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="MurabahaFormsTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="formName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="MurabahaGradesTable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" />
+    <Property Name="active" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="ReqHistory">
+    <Key>
+      <PropertyRef Name="sn" />
+    </Key>
+    <Property Name="sn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReqId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Initiator" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActionPerformed" Type="nvarchar" MaxLength="500" />
+    <Property Name="ActionDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="StaffGradesAllowances">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" Nullable="false" />
+    <Property Name="gradeLevelCode" Type="int" Nullable="false" />
+    <Property Name="abjLagPhcBranchesHousing" Type="varchar(max)" Nullable="false" />
+    <Property Name="otherBranchesHousing" Type="varchar(max)" Nullable="false" />
+    <Property Name="abjLagPhcBranchesAnnualGross" Type="varchar(max)" Nullable="false" />
+    <Property Name="otherBranchesAnnualGrosss" Type="varchar(max)" Nullable="false" />
+    <Property Name="active" Type="varchar" MaxLength="3" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StaffGradesSalary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gradeName" Type="varchar(max)" Nullable="false" />
+    <Property Name="netMonthlySalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="grossAnnualSalary" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="annualHousingAllowance" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="isSelected" Type="bit" />
+    <Property Name="active" Type="varchar" MaxLength="3" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <Function Name="SELECT_REPORT_TRANS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="requestReference" Type="varchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="HRViabilityPortalModelStoreContainer">
+    <EntitySet Name="AuditLogs" EntityType="Self.AuditLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaiMuajjalDocumentsTable" EntityType="Self.BaiMuajjalDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaiMuajjalFormsTable" EntityType="Self.BaiMuajjalFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaiMuajjalGradesTable" EntityType="Self.BaiMuajjalGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BMDetails" EntityType="Self.BMDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchDocumentsTable" EntityType="Self.BranchDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchFormsTable" EntityType="Self.BranchFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchGradesTable" EntityType="Self.BranchGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailAccount" EntityType="Self.EmailAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailBox" EntityType="Self.EmailBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facility" EntityType="Self.Facility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacilityDocuments" EntityType="Self.FacilityDocuments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacilityForms" EntityType="Self.FacilityForms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacilityUndertaking" EntityType="Self.FacilityUndertaking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeFinance18PercentDocumentsTable" EntityType="Self.HomeFinance18PercentDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeFinance18PercentFormsTable" EntityType="Self.HomeFinance18PercentFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeFinance18PercentGradesTable" EntityType="Self.HomeFinance18PercentGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeFinanceDocumentsTable" EntityType="Self.HomeFinanceDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeFinanceFormsTable" EntityType="Self.HomeFinanceFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeFinanceGradesTable" EntityType="Self.HomeFinanceGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRBranchesMaster" EntityType="Self.HRBranchesMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRFacilityMaster" EntityType="Self.HRFacilityMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPayroll" EntityType="Self.HRPayroll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IjaraServiceDocumentsTable" EntityType="Self.IjaraServiceDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IjaraServiceFormsTable" EntityType="Self.IjaraServiceFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IjaraServiceGradesTable" EntityType="Self.IjaraServiceGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Murabaha18PercentDocumentsTable" EntityType="Self.Murabaha18PercentDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Murabaha18PercentFormsTable" EntityType="Self.Murabaha18PercentFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Murabaha18PercentGradesTable" EntityType="Self.Murabaha18PercentGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Murabaha5PercentDocumentsTable" EntityType="Self.Murabaha5PercentDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Murabaha5PercentFormsTable" EntityType="Self.Murabaha5PercentFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Murabaha5PercentGradesTable" EntityType="Self.Murabaha5PercentGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MurabahaDocumentsTable" EntityType="Self.MurabahaDocumentsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MurabahaFormsTable" EntityType="Self.MurabahaFormsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MurabahaGradesTable" EntityType="Self.MurabahaGradesTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReqHistory" EntityType="Self.ReqHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffGradesAllowances" EntityType="Self.StaffGradesAllowances" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffGradesSalary" EntityType="Self.StaffGradesSalary" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd4" filename="JaizRoleManagerService.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd2" filename="JaizRoleManagerService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd0" filename="JaizRoleManagerService1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?wsdl" filename="JaizRoleManagerService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd3" filename="JaizRoleManagerService2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://172.13.21.160:8013/RoleManagerService/JaizRoleManagerService.svc?xsd=xsd1" filename="JaizRoleManagerService3.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HRViabilityPortalModelStoreContainer" CdmEntityContainer="HRViabilityPortalEntities">
+    <EntitySetMapping Name="AuditLogs">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.AuditLog">
+        <MappingFragment StoreEntitySet="AuditLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ActivityPerformed" ColumnName="ActivityPerformed" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DateOfActivity" ColumnName="DateOfActivity" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaiMuajjalDocumentsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BaiMuajjalDocumentsTable">
+        <MappingFragment StoreEntitySet="BaiMuajjalDocumentsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaiMuajjalFormsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BaiMuajjalFormsTable">
+        <MappingFragment StoreEntitySet="BaiMuajjalFormsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaiMuajjalGradesTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BaiMuajjalGradesTable">
+        <MappingFragment StoreEntitySet="BaiMuajjalGradesTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BMDetails">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BMDetail">
+        <MappingFragment StoreEntitySet="BMDetails">
+          <ScalarProperty Name="staffId" ColumnName="staffId" />
+          <ScalarProperty Name="staffName" ColumnName="staffName" />
+          <ScalarProperty Name="branchName" ColumnName="branchName" />
+          <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchDocumentsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BranchDocumentsTable">
+        <MappingFragment StoreEntitySet="BranchDocumentsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchFormsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BranchFormsTable">
+        <MappingFragment StoreEntitySet="BranchFormsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchGradesTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.BranchGradesTable">
+        <MappingFragment StoreEntitySet="BranchGradesTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailAccounts">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.EmailAccount">
+        <MappingFragment StoreEntitySet="EmailAccount">
+          <ScalarProperty Name="emailID" ColumnName="emailID" />
+          <ScalarProperty Name="emailName" ColumnName="emailName" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+          <ScalarProperty Name="emailPassword" ColumnName="emailPassword" />
+          <ScalarProperty Name="emailGateway" ColumnName="emailGateway" />
+          <ScalarProperty Name="emailUserName" ColumnName="emailUserName" />
+          <ScalarProperty Name="emailStatus" ColumnName="emailStatus" />
+          <ScalarProperty Name="emailINTBK" ColumnName="emailINTBK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailBoxes">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.EmailBox">
+        <MappingFragment StoreEntitySet="EmailBox">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+          <ScalarProperty Name="HasAttachment" ColumnName="HasAttachment" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="EmailStatus" ColumnName="EmailStatus" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facilities">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Facility">
+        <MappingFragment StoreEntitySet="Facility">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="facilityName" ColumnName="facilityName" />
+          <ScalarProperty Name="confirmedStaff" ColumnName="confirmedStaff" />
+          <ScalarProperty Name="unconfirmedStaff" ColumnName="unconfirmedStaff" />
+          <ScalarProperty Name="permanentStaff" ColumnName="permanentStaff" />
+          <ScalarProperty Name="contractStaff" ColumnName="contractStaff" />
+          <ScalarProperty Name="expectedLengthOfService" ColumnName="expectedLengthOfService" />
+          <ScalarProperty Name="percentageRate" ColumnName="percentageRate" />
+          <ScalarProperty Name="staffBranchPercentageRate" ColumnName="staffBranchPercentageRate" />
+          <ScalarProperty Name="minimumAnnualGrossAllowance" ColumnName="minimumAnnualGrossAllowance" />
+          <ScalarProperty Name="minimumAnnualHousingAllowance" ColumnName="minimumAnnualHousingAllowance" />
+          <ScalarProperty Name="maximumAmountLimit" ColumnName="maximumAmountLimit" />
+          <ScalarProperty Name="totalDeductionFromSalary" ColumnName="totalDeductionFromSalary" />
+          <ScalarProperty Name="minimumTenor" ColumnName="minimumTenor" />
+          <ScalarProperty Name="maximumTenor" ColumnName="maximumTenor" />
+          <ScalarProperty Name="undertakingFormNeeded" ColumnName="undertakingFormNeeded" />
+          <ScalarProperty Name="supervisorEndorsementNeeded" ColumnName="supervisorEndorsementNeeded" />
+          <ScalarProperty Name="searchAuthorityNeeded" ColumnName="searchAuthorityNeeded" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="facilityComments" ColumnName="facilityComments" />
+          <ScalarProperty Name="document1" ColumnName="document1" />
+          <ScalarProperty Name="document2" ColumnName="document2" />
+          <ScalarProperty Name="document3" ColumnName="document3" />
+          <ScalarProperty Name="document4" ColumnName="document4" />
+          <ScalarProperty Name="document5" ColumnName="document5" />
+          <ScalarProperty Name="document6" ColumnName="document6" />
+          <ScalarProperty Name="document7" ColumnName="document7" />
+          <ScalarProperty Name="document8" ColumnName="document8" />
+          <ScalarProperty Name="document9" ColumnName="document9" />
+          <ScalarProperty Name="document10" ColumnName="document10" />
+          <ScalarProperty Name="form1" ColumnName="form1" />
+          <ScalarProperty Name="form2" ColumnName="form2" />
+          <ScalarProperty Name="form3" ColumnName="form3" />
+          <ScalarProperty Name="form4" ColumnName="form4" />
+          <ScalarProperty Name="form5" ColumnName="form5" />
+          <ScalarProperty Name="form6" ColumnName="form6" />
+          <ScalarProperty Name="form7" ColumnName="form7" />
+          <ScalarProperty Name="form8" ColumnName="form8" />
+          <ScalarProperty Name="form9" ColumnName="form9" />
+          <ScalarProperty Name="form10" ColumnName="form10" />
+          <ScalarProperty Name="facilityRulesComments" ColumnName="facilityRulesComments" />
+          <ScalarProperty Name="facilityRulesSet" ColumnName="facilityRulesSet" />
+          <ScalarProperty Name="maximumAmountLimitOption" ColumnName="maximumAmountLimitOption" />
+          <ScalarProperty Name="mdApproval" ColumnName="mdApproval" />
+          <ScalarProperty Name="downPaymentRequired" ColumnName="downPaymentRequired" />
+          <ScalarProperty Name="dhApproval" ColumnName="dhApproval" />
+          <ScalarProperty Name="customField1" ColumnName="customField1" />
+          <ScalarProperty Name="customField2" ColumnName="customField2" />
+          <ScalarProperty Name="customField3" ColumnName="customField3" />
+          <ScalarProperty Name="customField4" ColumnName="customField4" />
+          <ScalarProperty Name="customField5" ColumnName="customField5" />
+          <ScalarProperty Name="customField6" ColumnName="customField6" />
+          <ScalarProperty Name="customField7" ColumnName="customField7" />
+          <ScalarProperty Name="customField8" ColumnName="customField8" />
+          <ScalarProperty Name="customField9" ColumnName="customField9" />
+          <ScalarProperty Name="customField10" ColumnName="customField10" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityDocuments">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.FacilityDocument">
+        <MappingFragment StoreEntitySet="FacilityDocuments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityForms">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.FacilityForm">
+        <MappingFragment StoreEntitySet="FacilityForms">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityUndertakings">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.FacilityUndertaking">
+        <MappingFragment StoreEntitySet="FacilityUndertaking">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="undertakingType" ColumnName="undertakingType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeFinanceDocumentsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinanceDocumentsTable">
+        <MappingFragment StoreEntitySet="HomeFinanceDocumentsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeFinanceFormsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinanceFormsTable">
+        <MappingFragment StoreEntitySet="HomeFinanceFormsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeFinanceGradesTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinanceGradesTable">
+        <MappingFragment StoreEntitySet="HomeFinanceGradesTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRBranchesMasters">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HRBranchesMaster">
+        <MappingFragment StoreEntitySet="HRBranchesMaster">
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRFacilityMasters">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HRFacilityMaster">
+        <MappingFragment StoreEntitySet="HRFacilityMaster">
+          <ScalarProperty Name="documentEmailSentTime" ColumnName="documentEmailSentTime" />
+          <ScalarProperty Name="documentEmailStatus" ColumnName="documentEmailStatus" />
+          <ScalarProperty Name="fileData10" ColumnName="fileData10" />
+          <ScalarProperty Name="fileContentType10" ColumnName="fileContentType10" />
+          <ScalarProperty Name="fileName10" ColumnName="fileName10" />
+          <ScalarProperty Name="fileData9" ColumnName="fileData9" />
+          <ScalarProperty Name="fileContentType9" ColumnName="fileContentType9" />
+          <ScalarProperty Name="fileName9" ColumnName="fileName9" />
+          <ScalarProperty Name="fileData8" ColumnName="fileData8" />
+          <ScalarProperty Name="fileContentType8" ColumnName="fileContentType8" />
+          <ScalarProperty Name="fileName8" ColumnName="fileName8" />
+          <ScalarProperty Name="fileData7" ColumnName="fileData7" />
+          <ScalarProperty Name="fileContentType7" ColumnName="fileContentType7" />
+          <ScalarProperty Name="fileName7" ColumnName="fileName7" />
+          <ScalarProperty Name="queueId" ColumnName="queueId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="requestReferenceNumber" ColumnName="requestReferenceNumber" />
+          <ScalarProperty Name="staffId" ColumnName="staffId" />
+          <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+          <ScalarProperty Name="cif" ColumnName="cif" />
+          <ScalarProperty Name="accountName" ColumnName="accountName" />
+          <ScalarProperty Name="facilityName" ColumnName="facilityName" />
+          <ScalarProperty Name="salaryGrade" ColumnName="salaryGrade" />
+          <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+          <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="staffEmailAddress" ColumnName="staffEmailAddress" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="natureOfEmployment" ColumnName="natureOfEmployment" />
+          <ScalarProperty Name="numberOfMonthsInService" ColumnName="numberOfMonthsInService" />
+          <ScalarProperty Name="jobFunction" ColumnName="jobFunction" />
+          <ScalarProperty Name="branch" ColumnName="branch" />
+          <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="grossAnnualSalary" ColumnName="grossAnnualSalary" />
+          <ScalarProperty Name="netMonthlySalary" ColumnName="netMonthlySalary" />
+          <ScalarProperty Name="annualHousingAllowance" ColumnName="annualHousingAllowance" />
+          <ScalarProperty Name="outstandingLoanAmount" ColumnName="outstandingLoanAmount" />
+          <ScalarProperty Name="noOfMonthsRemainingOnfacility" ColumnName="noOfMonthsRemainingOnfacility" />
+          <ScalarProperty Name="amountRequested" ColumnName="amountRequested" />
+          <ScalarProperty Name="downPaymentContribution" ColumnName="downPaymentContribution" />
+          <ScalarProperty Name="repaymentAmount" ColumnName="repaymentAmount" />
+          <ScalarProperty Name="percentageRate" ColumnName="percentageRate" />
+          <ScalarProperty Name="tenor" ColumnName="tenor" />
+          <ScalarProperty Name="loanPurpose" ColumnName="loanPurpose" />
+          <ScalarProperty Name="assetDescription" ColumnName="assetDescription" />
+          <ScalarProperty Name="vendorsName" ColumnName="vendorsName" />
+          <ScalarProperty Name="vendorsAddress" ColumnName="vendorsAddress" />
+          <ScalarProperty Name="vendorsPhoneNumber" ColumnName="vendorsPhoneNumber" />
+          <ScalarProperty Name="locationOfAsset" ColumnName="locationOfAsset" />
+          <ScalarProperty Name="vehicleModel" ColumnName="vehicleModel" />
+          <ScalarProperty Name="yearOfManufacture" ColumnName="yearOfManufacture" />
+          <ScalarProperty Name="modeOfDelivery" ColumnName="modeOfDelivery" />
+          <ScalarProperty Name="quotationEnclosed" ColumnName="quotationEnclosed" />
+          <ScalarProperty Name="typeOfProperty" ColumnName="typeOfProperty" />
+          <ScalarProperty Name="propertyDescription" ColumnName="propertyDescription" />
+          <ScalarProperty Name="titleDocumentType" ColumnName="titleDocumentType" />
+          <ScalarProperty Name="nameOfDeveloper" ColumnName="nameOfDeveloper" />
+          <ScalarProperty Name="addressOfDeveloper" ColumnName="addressOfDeveloper" />
+          <ScalarProperty Name="phoneNumberOfDeveloper" ColumnName="phoneNumberOfDeveloper" />
+          <ScalarProperty Name="locationOfProperty" ColumnName="locationOfProperty" />
+          <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+          <ScalarProperty Name="serviceProviderName" ColumnName="serviceProviderName" />
+          <ScalarProperty Name="serviceProviderAddress" ColumnName="serviceProviderAddress" />
+          <ScalarProperty Name="servicePhoneNumber" ColumnName="servicePhoneNumber" />
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+          <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+          <ScalarProperty Name="initiator" ColumnName="initiator" />
+          <ScalarProperty Name="initiatorTimestamp" ColumnName="initiatorTimestamp" />
+          <ScalarProperty Name="staffSupervisor" ColumnName="staffSupervisor" />
+          <ScalarProperty Name="hrApprover1" ColumnName="hrApprover1" />
+          <ScalarProperty Name="hrApprover1ApproveReject" ColumnName="hrApprover1ApproveReject" />
+          <ScalarProperty Name="hrApprover1Comment" ColumnName="hrApprover1Comment" />
+          <ScalarProperty Name="hrApprover1Timestamp" ColumnName="hrApprover1Timestamp" />
+          <ScalarProperty Name="hrApprover2" ColumnName="hrApprover2" />
+          <ScalarProperty Name="hrApprover2Timestamp" ColumnName="hrApprover2Timestamp" />
+          <ScalarProperty Name="hrApprover2ApproveReject" ColumnName="hrApprover2ApproveReject" />
+          <ScalarProperty Name="hrApprover2Comment" ColumnName="hrApprover2Comment" />
+          <ScalarProperty Name="bmBranchOfRequest" ColumnName="bmBranchOfRequest" />
+          <ScalarProperty Name="bmBranchOfRequestTimestamp" ColumnName="bmBranchOfRequestTimestamp" />
+          <ScalarProperty Name="bmBranchOfRequestApproveReject" ColumnName="bmBranchOfRequestApproveReject" />
+          <ScalarProperty Name="bmBranchOfRequestComment" ColumnName="bmBranchOfRequestComment" />
+          <ScalarProperty Name="mdApprover" ColumnName="mdApprover" />
+          <ScalarProperty Name="mdApproverTimestamp" ColumnName="mdApproverTimestamp" />
+          <ScalarProperty Name="mdApproverApproveReject" ColumnName="mdApproverApproveReject" />
+          <ScalarProperty Name="mdApproverComment" ColumnName="mdApproverComment" />
+          <ScalarProperty Name="fileName1" ColumnName="fileName1" />
+          <ScalarProperty Name="fileContentType1" ColumnName="fileContentType1" />
+          <ScalarProperty Name="fileData1" ColumnName="fileData1" />
+          <ScalarProperty Name="fileName2" ColumnName="fileName2" />
+          <ScalarProperty Name="fileContentType2" ColumnName="fileContentType2" />
+          <ScalarProperty Name="fileData2" ColumnName="fileData2" />
+          <ScalarProperty Name="fileName3" ColumnName="fileName3" />
+          <ScalarProperty Name="fileContentType3" ColumnName="fileContentType3" />
+          <ScalarProperty Name="fileData3" ColumnName="fileData3" />
+          <ScalarProperty Name="fileName4" ColumnName="fileName4" />
+          <ScalarProperty Name="fileContentType4" ColumnName="fileContentType4" />
+          <ScalarProperty Name="fileData4" ColumnName="fileData4" />
+          <ScalarProperty Name="fileName5" ColumnName="fileName5" />
+          <ScalarProperty Name="fileContentType5" ColumnName="fileContentType5" />
+          <ScalarProperty Name="fileData5" ColumnName="fileData5" />
+          <ScalarProperty Name="fileName6" ColumnName="fileName6" />
+          <ScalarProperty Name="fileContentType6" ColumnName="fileContentType6" />
+          <ScalarProperty Name="fileData6" ColumnName="fileData6" />
+          <ScalarProperty Name="hrApprover1RejectComment" ColumnName="hrApprover1RejectComment" />
+          <ScalarProperty Name="hrApprover2RejectComment" ColumnName="hrApprover2RejectComment" />
+          <ScalarProperty Name="mdApproverRejectComment" ColumnName="mdApproverRejectComment" />
+          <ScalarProperty Name="bmApproverRejectComment" ColumnName="bmApproverRejectComment" />
+          <ScalarProperty Name="dhApproverRejectComment" ColumnName="dhApproverRejectComment" />
+          <ScalarProperty Name="dhApprover" ColumnName="dhApprover" />
+          <ScalarProperty Name="dhApproverTimestamp" ColumnName="dhApproverTimestamp" />
+          <ScalarProperty Name="dhApproverApproveReject" ColumnName="dhApproverApproveReject" />
+          <ScalarProperty Name="dhApproverComment" ColumnName="dhApproverComment" />
+          <ScalarProperty Name="hasExistingVehicleLoan" ColumnName="hasExistingVehicleLoan" />
+          <ScalarProperty Name="hasExistingMortgageLoan" ColumnName="hasExistingMortgageLoan" />
+          <ScalarProperty Name="dateOfEmployment" ColumnName="dateOfEmployment" />
+          <ScalarProperty Name="customField1" ColumnName="customField1" />
+          <ScalarProperty Name="customField1Data" ColumnName="customField1Data" />
+          <ScalarProperty Name="customField2" ColumnName="customField2" />
+          <ScalarProperty Name="customField2Data" ColumnName="customField2Data" />
+          <ScalarProperty Name="customField3" ColumnName="customField3" />
+          <ScalarProperty Name="customField3Data" ColumnName="customField3Data" />
+          <ScalarProperty Name="customField4" ColumnName="customField4" />
+          <ScalarProperty Name="customField4Data" ColumnName="customField4Data" />
+          <ScalarProperty Name="customField5" ColumnName="customField5" />
+          <ScalarProperty Name="customField5Data" ColumnName="customField5Data" />
+          <ScalarProperty Name="customField6" ColumnName="customField6" />
+          <ScalarProperty Name="customField6Data" ColumnName="customField6Data" />
+          <ScalarProperty Name="customField7" ColumnName="customField7" />
+          <ScalarProperty Name="customField7Data" ColumnName="customField7Data" />
+          <ScalarProperty Name="customField8" ColumnName="customField8" />
+          <ScalarProperty Name="customField8Data" ColumnName="customField8Data" />
+          <ScalarProperty Name="customField9" ColumnName="customField9" />
+          <ScalarProperty Name="customField9Data" ColumnName="customField9Data" />
+          <ScalarProperty Name="customField10" ColumnName="customField10" />
+          <ScalarProperty Name="customField10Data" ColumnName="customField10Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPayrolls">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HRPayroll">
+        <MappingFragment StoreEntitySet="HRPayroll">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+          <ScalarProperty Name="AnnualGrossPackage" ColumnName="AnnualGrossPackage" />
+          <ScalarProperty Name="AnnualHousingAllowance" ColumnName="AnnualHousingAllowance" />
+          <ScalarProperty Name="MonthlyGrossPackage" ColumnName="MonthlyGrossPackage" />
+          <ScalarProperty Name="MonthlyNetPackage" ColumnName="MonthlyNetPackage" />
+          <ScalarProperty Name="PensionsContribution" ColumnName="PensionsContribution" />
+          <ScalarProperty Name="PAYE" ColumnName="PAYE" />
+          <ScalarProperty Name="NHF" ColumnName="NHF" />
+          <ScalarProperty Name="TotalAnnualDeduction" ColumnName="TotalAnnualDeduction" />
+          <ScalarProperty Name="TotalMonthlyDeduction" ColumnName="TotalMonthlyDeduction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IjaraServiceDocumentsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.IjaraServiceDocumentsTable">
+        <MappingFragment StoreEntitySet="IjaraServiceDocumentsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IjaraServiceFormsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.IjaraServiceFormsTable">
+        <MappingFragment StoreEntitySet="IjaraServiceFormsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IjaraServiceGradesTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.IjaraServiceGradesTable">
+        <MappingFragment StoreEntitySet="IjaraServiceGradesTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MurabahaDocumentsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.MurabahaDocumentsTable">
+        <MappingFragment StoreEntitySet="MurabahaDocumentsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MurabahaFormsTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.MurabahaFormsTable">
+        <MappingFragment StoreEntitySet="MurabahaFormsTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MurabahaGradesTables">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.MurabahaGradesTable">
+        <MappingFragment StoreEntitySet="MurabahaGradesTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReqHistories">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.ReqHistory">
+        <MappingFragment StoreEntitySet="ReqHistory">
+          <ScalarProperty Name="sn" ColumnName="sn" />
+          <ScalarProperty Name="ReqId" ColumnName="ReqId" />
+          <ScalarProperty Name="Initiator" ColumnName="Initiator" />
+          <ScalarProperty Name="ActionPerformed" ColumnName="ActionPerformed" />
+          <ScalarProperty Name="ActionDateTime" ColumnName="ActionDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffGradesSalaries">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.StaffGradesSalary">
+        <MappingFragment StoreEntitySet="StaffGradesSalary">
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="annualHousingAllowance" ColumnName="annualHousingAllowance" />
+          <ScalarProperty Name="grossAnnualSalary" ColumnName="grossAnnualSalary" />
+          <ScalarProperty Name="netMonthlySalary" ColumnName="netMonthlySalary" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffGradesAllowances">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.StaffGradesAllowance">
+        <MappingFragment StoreEntitySet="StaffGradesAllowances">
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="otherBranchesAnnualGrosss" ColumnName="otherBranchesAnnualGrosss" />
+          <ScalarProperty Name="abjLagPhcBranchesAnnualGross" ColumnName="abjLagPhcBranchesAnnualGross" />
+          <ScalarProperty Name="otherBranchesHousing" ColumnName="otherBranchesHousing" />
+          <ScalarProperty Name="abjLagPhcBranchesHousing" ColumnName="abjLagPhcBranchesHousing" />
+          <ScalarProperty Name="gradeLevelCode" ColumnName="gradeLevelCode" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeFinance18PercentDocumentsTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinance18PercentDocumentsTable">
+        <MappingFragment StoreEntitySet="HomeFinance18PercentDocumentsTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeFinance18PercentFormsTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinance18PercentFormsTable">
+        <MappingFragment StoreEntitySet="HomeFinance18PercentFormsTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeFinance18PercentGradesTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.HomeFinance18PercentGradesTable">
+        <MappingFragment StoreEntitySet="HomeFinance18PercentGradesTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Murabaha18PercentDocumentsTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha18PercentDocumentsTable">
+        <MappingFragment StoreEntitySet="Murabaha18PercentDocumentsTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Murabaha18PercentFormsTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha18PercentFormsTable">
+        <MappingFragment StoreEntitySet="Murabaha18PercentFormsTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Murabaha18PercentGradesTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha18PercentGradesTable">
+        <MappingFragment StoreEntitySet="Murabaha18PercentGradesTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Murabaha5PercentDocumentsTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha5PercentDocumentsTable">
+        <MappingFragment StoreEntitySet="Murabaha5PercentDocumentsTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Murabaha5PercentFormsTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha5PercentFormsTable">
+        <MappingFragment StoreEntitySet="Murabaha5PercentFormsTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="formName" ColumnName="formName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Murabaha5PercentGradesTable">
+      <EntityTypeMapping TypeName="HRViabilityPortalModel.Murabaha5PercentGradesTable">
+        <MappingFragment StoreEntitySet="Murabaha5PercentGradesTable">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SELECT_REPORT_TRANS" FunctionName="HRViabilityPortalModel.Store.SELECT_REPORT_TRANS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HRViabilityPortalModel.SELECT_REPORT_TRANS_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="requestReferenceNumber" ColumnName="requestReferenceNumber" />
+          <ScalarProperty Name="staffId" ColumnName="staffId" />
+          <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+          <ScalarProperty Name="cif" ColumnName="cif" />
+          <ScalarProperty Name="accountName" ColumnName="accountName" />
+          <ScalarProperty Name="facilityName" ColumnName="facilityName" />
+          <ScalarProperty Name="salaryGrade" ColumnName="salaryGrade" />
+          <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+          <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="staffEmailAddress" ColumnName="staffEmailAddress" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="natureOfEmployment" ColumnName="natureOfEmployment" />
+          <ScalarProperty Name="numberOfMonthsInService" ColumnName="numberOfMonthsInService" />
+          <ScalarProperty Name="jobFunction" ColumnName="jobFunction" />
+          <ScalarProperty Name="branch" ColumnName="branch" />
+          <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="grossAnnualSalary" ColumnName="grossAnnualSalary" />
+          <ScalarProperty Name="netMonthlySalary" ColumnName="netMonthlySalary" />
+          <ScalarProperty Name="annualHousingAllowance" ColumnName="annualHousingAllowance" />
+          <ScalarProperty Name="outstandingLoanAmount" ColumnName="outstandingLoanAmount" />
+          <ScalarProperty Name="noOfMonthsRemainingOnfacility" ColumnName="noOfMonthsRemainingOnfacility" />
+          <ScalarProperty Name="amountRequested" ColumnName="amountRequested" />
+          <ScalarProperty Name="downPaymentContribution" ColumnName="downPaymentContribution" />
+          <ScalarProperty Name="repaymentAmount" ColumnName="repaymentAmount" />
+          <ScalarProperty Name="percentageRate" ColumnName="percentageRate" />
+          <ScalarProperty Name="tenor" ColumnName="tenor" />
+          <ScalarProperty Name="loanPurpose" ColumnName="loanPurpose" />
+          <ScalarProperty Name="assetDescription" ColumnName="assetDescription" />
+          <ScalarProperty Name="vendorsName" ColumnName="vendorsName" />
+          <ScalarProperty Name="vendorsAddress" ColumnName="vendorsAddress" />
+          <ScalarProperty Name="vendorsPhoneNumber" ColumnName="vendorsPhoneNumber" />
+          <ScalarProperty Name="locationOfAsset" ColumnName="locationOfAsset" />
+          <ScalarProperty Name="vehicleModel" ColumnName="vehicleModel" />
+          <ScalarProperty Name="yearOfManufacture" ColumnName="yearOfManufacture" />
+          <ScalarProperty Name="modeOfDelivery" ColumnName="modeOfDelivery" />
+          <ScalarProperty Name="quotationEnclosed" ColumnName="quotationEnclosed" />
+          <ScalarProperty Name="typeOfProperty" ColumnName="typeOfProperty" />
+          <ScalarProperty Name="propertyDescription" ColumnName="propertyDescription" />
+          <ScalarProperty Name="titleDocumentType" ColumnName="titleDocumentType" />
+          <ScalarProperty Name="nameOfDeveloper" ColumnName="nameOfDeveloper" />
+          <ScalarProperty Name="addressOfDeveloper" ColumnName="addressOfDeveloper" />
+          <ScalarProperty Name="phoneNumberOfDeveloper" ColumnName="phoneNumberOfDeveloper" />
+          <ScalarProperty Name="locationOfProperty" ColumnName="locationOfProperty" />
+          <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+          <ScalarProperty Name="serviceProviderName" ColumnName="serviceProviderName" />
+          <ScalarProperty Name="serviceProviderAddress" ColumnName="serviceProviderAddress" />
+          <ScalarProperty Name="servicePhoneNumber" ColumnName="servicePhoneNumber" />
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+          <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+          <ScalarProperty Name="initiator" ColumnName="initiator" />
+          <ScalarProperty Name="initiatorTimestamp" ColumnName="initiatorTimestamp" />
+          <ScalarProperty Name="staffSupervisor" ColumnName="staffSupervisor" />
+          <ScalarProperty Name="hrApprover1" ColumnName="hrApprover1" />
+          <ScalarProperty Name="hrApprover1ApproveReject" ColumnName="hrApprover1ApproveReject" />
+          <ScalarProperty Name="hrApprover1Comment" ColumnName="hrApprover1Comment" />
+          <ScalarProperty Name="hrApprover1Timestamp" ColumnName="hrApprover1Timestamp" />
+          <ScalarProperty Name="hrApprover2" ColumnName="hrApprover2" />
+          <ScalarProperty Name="hrApprover2Timestamp" ColumnName="hrApprover2Timestamp" />
+          <ScalarProperty Name="hrApprover2ApproveReject" ColumnName="hrApprover2ApproveReject" />
+          <ScalarProperty Name="hrApprover2Comment" ColumnName="hrApprover2Comment" />
+          <ScalarProperty Name="bmBranchOfRequest" ColumnName="bmBranchOfRequest" />
+          <ScalarProperty Name="bmBranchOfRequestTimestamp" ColumnName="bmBranchOfRequestTimestamp" />
+          <ScalarProperty Name="bmBranchOfRequestApproveReject" ColumnName="bmBranchOfRequestApproveReject" />
+          <ScalarProperty Name="bmBranchOfRequestComment" ColumnName="bmBranchOfRequestComment" />
+          <ScalarProperty Name="mdApprover" ColumnName="mdApprover" />
+          <ScalarProperty Name="mdApproverTimestamp" ColumnName="mdApproverTimestamp" />
+          <ScalarProperty Name="mdApproverApproveReject" ColumnName="mdApproverApproveReject" />
+          <ScalarProperty Name="mdApproverComment" ColumnName="mdApproverComment" />
+          <ScalarProperty Name="fileName1" ColumnName="fileName1" />
+          <ScalarProperty Name="fileContentType1" ColumnName="fileContentType1" />
+          <ScalarProperty Name="fileData1" ColumnName="fileData1" />
+          <ScalarProperty Name="fileName2" ColumnName="fileName2" />
+          <ScalarProperty Name="fileContentType2" ColumnName="fileContentType2" />
+          <ScalarProperty Name="fileData2" ColumnName="fileData2" />
+          <ScalarProperty Name="fileName3" ColumnName="fileName3" />
+          <ScalarProperty Name="fileContentType3" ColumnName="fileContentType3" />
+          <ScalarProperty Name="fileData3" ColumnName="fileData3" />
+          <ScalarProperty Name="fileName4" ColumnName="fileName4" />
+          <ScalarProperty Name="fileContentType4" ColumnName="fileContentType4" />
+          <ScalarProperty Name="fileData4" ColumnName="fileData4" />
+          <ScalarProperty Name="fileName5" ColumnName="fileName5" />
+          <ScalarProperty Name="fileContentType5" ColumnName="fileContentType5" />
+          <ScalarProperty Name="fileData5" ColumnName="fileData5" />
+          <ScalarProperty Name="fileName6" ColumnName="fileName6" />
+          <ScalarProperty Name="fileContentType6" ColumnName="fileContentType6" />
+          <ScalarProperty Name="fileData6" ColumnName="fileData6" />
+          <ScalarProperty Name="hrApprover1RejectComment" ColumnName="hrApprover1RejectComment" />
+          <ScalarProperty Name="hrApprover2RejectComment" ColumnName="hrApprover2RejectComment" />
+          <ScalarProperty Name="mdApproverRejectComment" ColumnName="mdApproverRejectComment" />
+          <ScalarProperty Name="bmApproverRejectComment" ColumnName="bmApproverRejectComment" />
+          <ScalarProperty Name="dhApproverRejectComment" ColumnName="dhApproverRejectComment" />
+          <ScalarProperty Name="dhApprover" ColumnName="dhApprover" />
+          <ScalarProperty Name="dhApproverTimestamp" ColumnName="dhApproverTimestamp" />
+          <ScalarProperty Name="dhApproverApproveReject" ColumnName="dhApproverApproveReject" />
+          <ScalarProperty Name="dhApproverComment" ColumnName="dhApproverComment" />
+          <ScalarProperty Name="hasExistingVehicleLoan" ColumnName="hasExistingVehicleLoan" />
+          <ScalarProperty Name="hasExistingMortgageLoan" ColumnName="hasExistingMortgageLoan" />
+          <ScalarProperty Name="dateOfEmployment" ColumnName="dateOfEmployment" />
+          <ScalarProperty Name="customField1" ColumnName="customField1" />
+          <ScalarProperty Name="customField1Data" ColumnName="customField1Data" />
+          <ScalarProperty Name="customField2" ColumnName="customField2" />
+          <ScalarProperty Name="customField2Data" ColumnName="customField2Data" />
+          <ScalarProperty Name="customField3" ColumnName="customField3" />
+          <ScalarProperty Name="customField3Data" ColumnName="customField3Data" />
+          <ScalarProperty Name="customField4" ColumnName="customField4" />
+          <ScalarProperty Name="customField4Data" ColumnName="customField4Data" />
+          <ScalarProperty Name="customField5" ColumnName="customField5" />
+          <ScalarProperty Name="customField5Data" ColumnName="customField5Data" />
+          <ScalarProperty Name="customField6" ColumnName="customField6" />
+          <ScalarProperty Name="customField6Data" ColumnName="customField6Data" />
+          <ScalarProperty Name="customField7" ColumnName="customField7" />
+          <ScalarProperty Name="customField7Data" ColumnName="customField7Data" />
+          <ScalarProperty Name="customField8" ColumnName="customField8" />
+          <ScalarProperty Name="customField8Data" ColumnName="customField8Data" />
+          <ScalarProperty Name="customField9" ColumnName="customField9" />
+          <ScalarProperty Name="customField9Data" ColumnName="customField9Data" />
+          <ScalarProperty Name="customField10" ColumnName="customField10" />
+          <ScalarProperty Name="customField10Data" ColumnName="customField10Data" />
+          <ScalarProperty Name="queueId" ColumnName="queueId" />
+          <ScalarProperty Name="fileName7" ColumnName="fileName7" />
+          <ScalarProperty Name="fileContentType7" ColumnName="fileContentType7" />
+          <ScalarProperty Name="fileData7" ColumnName="fileData7" />
+          <ScalarProperty Name="fileName8" ColumnName="fileName8" />
+          <ScalarProperty Name="fileContentType8" ColumnName="fileContentType8" />
+          <ScalarProperty Name="fileData8" ColumnName="fileData8" />
+          <ScalarProperty Name="fileName9" ColumnName="fileName9" />
+          <ScalarProperty Name="fileContentType9" ColumnName="fileContentType9" />
+          <ScalarProperty Name="fileData9" ColumnName="fileData9" />
+          <ScalarProperty Name="fileName10" ColumnName="fileName10" />
+          <ScalarProperty Name="fileContentType10" ColumnName="fileContentType10" />
+          <ScalarProperty Name="fileData10" ColumnName="fileData10" />
+          <ScalarProperty Name="documentEmailStatus" ColumnName="documentEmailStatus" />
+          <ScalarProperty Name="documentEmailSentTime" ColumnName="documentEmailSentTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

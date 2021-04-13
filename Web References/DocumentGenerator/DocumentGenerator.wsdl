@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://controller.hrviability.jaizbank.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="DocumentGenerator" targetNamespace="http://controller.hrviability.jaizbank.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://jz-srv-aps9-2:8080/HRViabilityDocumentsService/DocumentGenerator?xsd=1" namespace="http://controller.hrviability.jaizbank.com/" />
+    </xsd:schema>
+  </types>
+  <message name="GenerateFacilityReceipt">
+    <part name="parameters" element="tns:GenerateFacilityReceipt" />
+  </message>
+  <message name="GenerateFacilityReceiptResponse">
+    <part name="parameters" element="tns:GenerateFacilityReceiptResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="CreateApplicationForm">
+    <part name="parameters" element="tns:CreateApplicationForm" />
+  </message>
+  <message name="CreateApplicationFormResponse">
+    <part name="parameters" element="tns:CreateApplicationFormResponse" />
+  </message>
+  <message name="CreateDocuments">
+    <part name="parameters" element="tns:CreateDocuments" />
+  </message>
+  <message name="CreateDocumentsResponse">
+    <part name="parameters" element="tns:CreateDocumentsResponse" />
+  </message>
+  <message name="CreateSukukForm">
+    <part name="parameters" element="tns:CreateSukukForm" />
+  </message>
+  <message name="CreateSukukFormResponse">
+    <part name="parameters" element="tns:CreateSukukFormResponse" />
+  </message>
+  <portType name="DocumentGenerator">
+    <operation name="GenerateFacilityReceipt">
+      <input wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/GenerateFacilityReceiptRequest" message="tns:GenerateFacilityReceipt" />
+      <output wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/GenerateFacilityReceiptResponse" message="tns:GenerateFacilityReceiptResponse" />
+      <fault wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/GenerateFacilityReceipt/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="CreateApplicationForm">
+      <input wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateApplicationFormRequest" message="tns:CreateApplicationForm" />
+      <output wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateApplicationFormResponse" message="tns:CreateApplicationFormResponse" />
+      <fault wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateApplicationForm/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="CreateDocuments">
+      <input wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateDocumentsRequest" message="tns:CreateDocuments" />
+      <output wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateDocumentsResponse" message="tns:CreateDocumentsResponse" />
+      <fault wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateDocuments/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="CreateSukukForm">
+      <input wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateSukukFormRequest" message="tns:CreateSukukForm" />
+      <output wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateSukukFormResponse" message="tns:CreateSukukFormResponse" />
+      <fault wsam:Action="http://controller.hrviability.jaizbank.com/DocumentGenerator/CreateSukukForm/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="DocumentGeneratorPortBinding" type="tns:DocumentGenerator">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GenerateFacilityReceipt">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CreateApplicationForm">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CreateDocuments">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="CreateSukukForm">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="DocumentGenerator">
+    <port name="DocumentGeneratorPort" binding="tns:DocumentGeneratorPortBinding">
+      <soap:address location="http://jz-srv-aps9-2:8080/HRViabilityDocumentsService/DocumentGenerator" />
+    </port>
+  </service>
+</definitions>
