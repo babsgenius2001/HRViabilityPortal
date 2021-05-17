@@ -174,9 +174,9 @@ D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\bin\System.IO.Compress
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\bin\System.Net.Http.dll
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\bin\log4net.xml
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\bin\NLog.xml
+D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.csprojAssemblyReference.cache
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.csproj.CoreCompileInputs.cache
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.csproj.CopyComplete
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.dll
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.pdb
 D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.XmlSerializers.dll
-D:\Documents\MyProjects\My_NET_Projects\HRViabilityPortal\obj\Release\HRViabilityPortal.csprojAssemblyReference.cache

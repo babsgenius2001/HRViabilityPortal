@@ -42,7 +42,7 @@
         </EntityType>
         <EntityType Name="BMDetails">
           <Key>
-            <PropertyRef Name="staffId" />
+            <PropertyRef Name="branchCode" />
           </Key>
           <Property Name="staffId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="staffName" Type="nvarchar(max)" Nullable="false" />
@@ -623,7 +623,7 @@
         </EntityType>
         <EntityType Name="BMDetail">
           <Key>
-            <PropertyRef Name="staffId" />
+            <PropertyRef Name="branchCode" />
           </Key>
           <Property Name="staffId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="staffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1061,7 +1061,7 @@
           <EntitySet Name="Murabaha5PercentFormsTable" EntityType="HRViabilityPortalModel.Murabaha5PercentFormsTable" />
           <EntitySet Name="Murabaha5PercentGradesTable" EntityType="HRViabilityPortalModel.Murabaha5PercentGradesTable" />
           <FunctionImport Name="SELECT_REPORT_TRANS" ReturnType="Collection(HRViabilityPortalModel.SELECT_REPORT_TRANS_Result)">
-            <Parameter Name="requestReference" Mode="In" Type="String" />
+          <Parameter Name="requestReference" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="StaffGradesSalary">

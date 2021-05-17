@@ -335,6 +335,7 @@
     <Compile Include="Database References\StaffGradesSalary.cs">
       <DependentUpon>HRViabilityPortalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AdjustBMDetailsViewModel.cs" />
     <Compile Include="ViewModels\AdjustPayrollViewModel.cs" />
     <Compile Include="ViewModels\CreateDocumentsViewModel.cs" />
     <Compile Include="ViewModels\CreateFacilityRuleViewModel.cs" />
@@ -349,6 +350,7 @@
     <Compile Include="ViewModels\HRFacilityRequestReviewQueuedViewModel.cs" />
     <Compile Include="ViewModels\QueuedRequestsViewModel.cs" />
     <Compile Include="ViewModels\RemoveDocumentsViewModel.cs" />
+    <Compile Include="ViewModels\RerouteRequestsViewModel.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
     <Compile Include="ViewModels\Utility.cs" />
     <Compile Include="Global.asax.cs">
@@ -2346,6 +2348,8 @@
     <Content Include="Views\Settings\RemoveDocument.cshtml" />
     <Content Include="Views\Settings\UpdatePayroll.cshtml" />
     <Content Include="Views\HRReports\QueuedRequests.cshtml" />
+    <Content Include="Views\Settings\UpdateBMDetails.cshtml" />
+    <Content Include="Views\Settings\RerouteRequests.cshtml" />
     <None Include="Web References\ADDetails\Service.wsdl" />
     <Content Include="Web References\InternetBankingHelper\ADObjectResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>

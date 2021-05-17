@@ -204,7 +204,7 @@ namespace HRViabilityPortal.ViewModels
 
         public override void HandleRequest()
         {
-            _jobLogger.Info("===========Enetered the NewRequestViewModel=================");
+            _jobLogger.Info("===========Entered the NewRequestViewModel=================");
             _jobLogger.Info("===========EventCommand Called================= " + EventCommand.ToLower());
             //// This is an example of adding on a new command
             switch (EventCommand.ToLower())
@@ -903,7 +903,6 @@ namespace HRViabilityPortal.ViewModels
         }
        public List<Facility> Get()
         {
-
             // FacilityReqs = GetFacilityRulesData(facName);
 
             Entity2 = GetFacilityData();
@@ -1185,7 +1184,7 @@ namespace HRViabilityPortal.ViewModels
                         var respon2 = JsonConvert.SerializeObject(Xxc2);
                         var json2 = JsonConvert.DeserializeObject<Rootobject2>(respon2);
 
-                        if (json.Status)
+                        if (json2.Status)
                         {
                             FacilityReq.department = json2.Data.department;
                             FacilityReq.staffSupervisor = json2.Data.supervisor_username;
@@ -1193,14 +1192,14 @@ namespace HRViabilityPortal.ViewModels
                             FacilityReq.branchCode = json2.Data.branch;
                         }
 
-                        _jobLogger.Info("===========VaklidateStep1Items Method=================");
+                        _jobLogger.Info("===========ValidateStep1Items Method=================");
                         //This line will be reedited later//
                         string query = "select * FROM Employee_PaySlip where Emp_Id = (select MAX(Emp_Id) Emp_Id from tblEmployee where Emp_Payroll_No = '" + UserId + "') "
                             + " and EmployeePaySlipId = (select MAX(EmployeePaySlipId) FROM Employee_PaySlip "
                             + " where Emp_Id = (select MAX(Emp_Id) Emp_Id from tblEmployee where Emp_Payroll_No = '" + UserId + "')) ";
 
 
-                        _jobLogger.Info("===========Fetching Emplotee Payslip Details from PayMaster================ " + query);
+                        _jobLogger.Info("===========Fetching Employee Payslip Details from PayMaster================ " + query);
                         // string query = "select * from HRPayroll where GradeName = '" + salaryGrade + "'";
                         using (SqlConnection Connect = new SqlConnection(_HRMasterConnectionString()))
                         {
@@ -1362,24 +1361,24 @@ namespace HRViabilityPortal.ViewModels
             decimal totalrep = 0;
             string query = "";
 
-            query = "select SUM(round((sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0))) / count(NVL(p.profit_amt, 0)), 2)) totalMonthlyRepayment  "                     
+            query = "select SUM(round((sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0))) / count(NVL(p.profit_amt, 0)), 2)) totalMonthlyRepayment  "
                       + "from "
                       + "(select D.cif_no, A.long_name_eng, C.code as Class,C.category  , C.long_name_eng as facility_type, Deal_amount, serial_no, D.branch_code, D.MATURITY_DATE, "
-                      + "PP.COMP_CODE, PP.BRANCH, "
-                      + "PP.PLAN_NBR, PP.PLAN_SEQ "
-                      + "from imal.trsdeal D , imal.trsclass C, imal.cif  A, "
+                      + "PP.COMP_CODE, PP.BRANCH,PP.PLAN_NBR, PP.PLAN_SEQ "
+                      + "from imal.trsdeal D, imal.trsclass C, imal.cif A, "
                       + "(select * from imal.trspayplan  where (COMP_CODE, BRANCH, PLAN_NBR, PLAN_SEQ)  in (select comp_code, branch, plan_nbr, max(plan_seq) as plan_seq "
                       + "from imal.trspayplan where status = 'P' "
-                      + "group by comp_code, branch, plan_nbr)) PP where D.COMP_CODE = PP.COMP_CODE(+) AND D.BRANCH_CODE = PP.BRANCH(+) AND D.SERIAL_NO = PP.TRX_NBR(+)  "
-                      + "AND D.STATUS = 'P' AND PP.STATUS = 'P'  and D.cif_no = A.cif_no  and D.class = C.code and C.CODE != 363 and D.cif_no = " + cif + " "
-                      + "and D.status = 'P') A, imal.trspayplandet P, imal.TRSdet T  "
-                      + "where P.COMP_CODE = A.COMP_CODE AND P.BRANCH = A.BRANCH AND P.PLAN_NBR = A.PLAN_NBR AND P.PLAN_SEQ = A.PLAN_SEQ  "
-                      + "and P.payment_type <> 'C' "
-                      + "and get_Facility_Balance ( A.plan_nbr ,A.branch,A.plan_seq, A.category,A.Class) > 0 "
-                      + "and to_char(P.value_date,'yyyy') = to_char(sysdate, 'yyyy') and MATURITY_DATE > sysdate  "
+                      + "group by comp_code, branch, plan_nbr)) PP where D.COMP_CODE = PP.COMP_CODE(+) AND D.BRANCH_CODE = PP.BRANCH(+) AND D.SERIAL_NO = PP.TRX_NBR(+) "
+                      + "AND D.STATUS = 'P' AND PP.STATUS = 'P'  and D.cif_no = A.cif_no  and D.class = C.code and C.CODE != 363 and D.cif_no = '"+cif+"' "
+                      + "and D.status = 'P') A, imal.trspayplandet P, imal.TRSdet T "
+                      + "where P.COMP_CODE = A.COMP_CODE AND P.BRANCH = A.BRANCH AND P.PLAN_NBR = A.PLAN_NBR AND P.PLAN_SEQ = A.PLAN_SEQ "
+                      + "and P.payment_type<> 'C' "
+                      + "and get_Facility_Balance (A.plan_nbr, A.branch, A.plan_seq, A.category, A.Class) > 0 "
+                      + "and to_char(P.value_date,'yyyy') = to_char(sysdate, 'yyyy') and MATURITY_DATE > sysdate "
                       + "and T.line_no = (select max(line_no) from imal.TRSdet where branch_code = T.branch_code and serial_no = T.serial_no) "
-                      + "AND A.BRANCH_CODE = T.BRANCH_CODE AND A.SERIAL_NO = T.SERIAL_NO and T.MATR_AC_GL <> 210111 "
-                      + "group by cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE,facility_type  "
+                      + "AND A.BRANCH_CODE = T.BRANCH_CODE AND A.SERIAL_NO = T.SERIAL_NO and T.MATR_AC_GL<> 210111 "
+                      + "and to_char(P.value_date,'dd') = 23 "
+                      + "group by cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE,facility_type "
                       + "order by long_name_eng desc ";
 
             try
@@ -1430,37 +1429,61 @@ namespace HRViabilityPortal.ViewModels
             int count = 0;
             _jobLogger.Info("===========GetAllFacilityDetails Method ================ ");
 
+            //Old Query===========//
+            //query = "select A.cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE ,facility_type, sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0)) as Annual_payment, "
+            //         + "round((sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0))) / count(NVL(p.profit_amt, 0)), 2) monthly_payment "
+            //         + "from "
+            //         + "(select D.cif_no, A.long_name_eng, C.code as Class,C.category  , C.long_name_eng as facility_type, Deal_amount, serial_no, D.branch_code, D.MATURITY_DATE, "
+            //         + "PP.COMP_CODE, PP.BRANCH, "
+            //         + "PP.PLAN_NBR, PP.PLAN_SEQ "
+            //         + "from imal.trsdeal D , imal.trsclass C, imal.cif  A, "
+            //         + "(select * from imal.trspayplan  where (COMP_CODE, BRANCH, PLAN_NBR, PLAN_SEQ)  in (select comp_code, branch, plan_nbr, max(plan_seq) as plan_seq "
+            //         + "from imal.trspayplan where status = 'P' "
+            //         + "group by comp_code, branch, plan_nbr)) PP where D.COMP_CODE = PP.COMP_CODE(+) AND D.BRANCH_CODE = PP.BRANCH(+) AND D.SERIAL_NO = PP.TRX_NBR(+)  "
+            //         + "AND D.STATUS = 'P' AND PP.STATUS = 'P'  and D.cif_no = A.cif_no  and D.class = C.code and C.CODE != 363 and D.cif_no = " + cif + " "
+            //         + "and D.status = 'P') A, imal.trspayplandet P, imal.TRSdet T  "
+            //         + "where P.COMP_CODE = A.COMP_CODE AND P.BRANCH = A.BRANCH AND P.PLAN_NBR = A.PLAN_NBR AND P.PLAN_SEQ = A.PLAN_SEQ  "
+            //         + "and P.payment_type <> 'C' "
+            //         + "and get_Facility_Balance ( A.plan_nbr ,A.branch,A.plan_seq, A.category,A.Class) > 0 "
+            //         + "and to_char(P.value_date,'yyyy') = to_char(sysdate, 'yyyy') and MATURITY_DATE > sysdate  "
+            //         + "and T.line_no = (select max(line_no) from imal.TRSdet where branch_code = T.branch_code and serial_no = T.serial_no) "
+            //         + "AND A.BRANCH_CODE = T.BRANCH_CODE AND A.SERIAL_NO = T.SERIAL_NO and T.MATR_AC_GL <> 210111 "
+            //         + "group by cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE,facility_type  "
+            //         + "order by long_name_eng desc ";
+
+            //New Query Affixed on 05/05/2021==========//
+
             query = "select A.cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE ,facility_type, sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0)) as Annual_payment, "
-                     + "round((sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0))) / count(NVL(p.profit_amt, 0)), 2) monthly_payment "
-                     + "from "
-                     + "(select D.cif_no, A.long_name_eng, C.code as Class,C.category  , C.long_name_eng as facility_type, Deal_amount, serial_no, D.branch_code, D.MATURITY_DATE, "
-                     + "PP.COMP_CODE, PP.BRANCH, "
-                     + "PP.PLAN_NBR, PP.PLAN_SEQ "
-                     + "from imal.trsdeal D , imal.trsclass C, imal.cif  A, "
-                     + "(select * from imal.trspayplan  where (COMP_CODE, BRANCH, PLAN_NBR, PLAN_SEQ)  in (select comp_code, branch, plan_nbr, max(plan_seq) as plan_seq "
-                     + "from imal.trspayplan where status = 'P' "
-                     + "group by comp_code, branch, plan_nbr)) PP where D.COMP_CODE = PP.COMP_CODE(+) AND D.BRANCH_CODE = PP.BRANCH(+) AND D.SERIAL_NO = PP.TRX_NBR(+)  "
-                     + "AND D.STATUS = 'P' AND PP.STATUS = 'P'  and D.cif_no = A.cif_no  and D.class = C.code and C.CODE != 363 and D.cif_no = " + cif + " "
-                     + "and D.status = 'P') A, imal.trspayplandet P, imal.TRSdet T  "
-                     + "where P.COMP_CODE = A.COMP_CODE AND P.BRANCH = A.BRANCH AND P.PLAN_NBR = A.PLAN_NBR AND P.PLAN_SEQ = A.PLAN_SEQ  " 
-                     + "and P.payment_type <> 'C' "
-                     + "and get_Facility_Balance ( A.plan_nbr ,A.branch,A.plan_seq, A.category,A.Class) > 0 "
-                     + "and to_char(P.value_date,'yyyy') = to_char(sysdate, 'yyyy') and MATURITY_DATE > sysdate  "
-                     + "and T.line_no = (select max(line_no) from imal.TRSdet where branch_code = T.branch_code and serial_no = T.serial_no) "
-                     + "AND A.BRANCH_CODE = T.BRANCH_CODE AND A.SERIAL_NO = T.SERIAL_NO and T.MATR_AC_GL <> 210111 "
-                     + "group by cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE,facility_type  "
-                     + "order by long_name_eng desc ";
+                + "round((sum(p.capital_amt) + sum(NVL(p.profit_amt, 0) + NVL(p.profit_amt_new, 0))) / count(NVL(p.profit_amt, 0)), 2) monthly_payment "
+                + "from "
+                + "(select D.cif_no, A.long_name_eng, C.code as Class, C.category, C.long_name_eng as facility_type, Deal_amount, serial_no, D.branch_code, D.MATURITY_DATE, "
+                + "PP.COMP_CODE, PP.BRANCH, PP.PLAN_NBR, PP.PLAN_SEQ "
+                + "from imal.trsdeal D , imal.trsclass C, imal.cif  A, "
+                + "(select * from imal.trspayplan  where (COMP_CODE, BRANCH, PLAN_NBR, PLAN_SEQ)  in (select comp_code, branch, plan_nbr, max(plan_seq) as plan_seq "
+                + "from imal.trspayplan where status = 'P' "
+                + "group by comp_code, branch, plan_nbr)) PP where D.COMP_CODE = PP.COMP_CODE(+) AND D.BRANCH_CODE = PP.BRANCH(+) AND D.SERIAL_NO = PP.TRX_NBR(+) "
+                + "AND D.STATUS = 'P' AND PP.STATUS = 'P'  and D.cif_no = A.cif_no  and D.class = C.code and C.CODE != 363 and D.cif_no = '"+ cif + "' "
+                + "and D.status = 'P') A, imal.trspayplandet P, imal.TRSdet T "
+                + "where P.COMP_CODE = A.COMP_CODE AND P.BRANCH = A.BRANCH AND P.PLAN_NBR = A.PLAN_NBR AND P.PLAN_SEQ = A.PLAN_SEQ "
+                + "and P.payment_type<> 'C' "
+                + "and get_Facility_Balance (A.plan_nbr, A.branch, A.plan_seq, A.category, A.Class) > 0 "
+                + "and to_char(P.value_date,'yyyy') = to_char(sysdate, 'yyyy') and MATURITY_DATE > sysdate "
+                + "and T.line_no = (select max(line_no) from imal.TRSdet where branch_code = T.branch_code and serial_no = T.serial_no) "
+                + "AND A.BRANCH_CODE = T.BRANCH_CODE AND A.SERIAL_NO = T.SERIAL_NO and T.MATR_AC_GL<> 210111 "
+                + "and to_char(P.value_date,'dd') = 23 "
+                + "group by cif_no,long_name_eng,A.Deal_amount,MATURITY_DATE,facility_type "
+                + "order by long_name_eng desc ";
 
             try
             {
                 _jobLogger.Info("===========GetAllFacilityDetails Query ================ " +query);
                 using (OracleConnection connection = new OracleConnection(ImalConn_))
                 {
-
                     OracleCommand command = new OracleCommand(query, connection);
                     connection.Open();
                     OracleDataReader reader;
                     reader = command.ExecuteReader();
+
                     while (reader.Read())
                     {
                         mert = new FacilityDetailsDAO();
@@ -1512,8 +1535,6 @@ namespace HRViabilityPortal.ViewModels
 
             return ret;
         }
-
-
         protected bool confirmFieldItems()
         {
             bool ret = true;

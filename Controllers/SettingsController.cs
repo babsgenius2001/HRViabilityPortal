@@ -559,5 +559,94 @@ namespace HRViabilityPortal.Controllers
             }
             return View(vm);
         }
+
+        public ActionResult UpdateBMDetails(int? page)
+        {
+            AdjustBMDetailsViewModel vm = new AdjustBMDetailsViewModel();
+            vm.IsSearchAreaVisible = false;
+
+            vm.UserId = Session["userID"].ToString();
+
+            vm.PageSize = 10;
+            vm.PageNumber = (page ?? 1);
+            vm.HandleRequest();
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult UpdateBMDetails(AdjustBMDetailsViewModel vm)
+        {
+            vm.IsValid = ModelState.IsValid;
+            vm.IsSearchAreaVisible = false;
+
+            vm.UserId = Session["userID"].ToString();
+
+            if (vm.EventCommand == "resetsearch" || vm.EventCommand == "save" || vm.EventCommand == "cancel")
+            {
+                vm.PageSize = 10;
+                vm.PageNumber = 1;
+            }
+            vm.HandleRequest();
+
+            if (vm.IsValid)
+            {
+                TempData["Msg"] = vm.Msg;
+                // NOTE: Must clear the model state in order to bind
+                //       the @Html helpers to the new model values
+                ModelState.Clear();
+            }
+            else
+            {
+                foreach (KeyValuePair<string, string> item in vm.ValidationErrors)
+                {
+                    ModelState.AddModelError(item.Key, item.Value);
+                }
+            }
+            return View(vm);
+        }        
+
+        public ActionResult RerouteRequests(int? page)
+        {
+            RerouteRequestsViewModel vm = new RerouteRequestsViewModel();            
+            vm.EventCommand = "rerouteRequest";
+            vm.UserId = Session["userID"].ToString();
+
+            vm.PageSize = 10;
+            vm.PageNumber = (page ?? 1);
+
+            vm.HandleRequest();
+
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult RerouteRequests(RerouteRequestsViewModel vm)
+        {
+            vm.IsValid = ModelState.IsValid;
+            vm.IsSearchAreaVisible = false;
+
+            vm.UserId = Session["userID"].ToString();           
+
+            if (vm.EventCommand == "resetsearch" || vm.EventCommand == "save" || vm.EventCommand == "cancel")
+            {
+                vm.PageSize = 10;
+                vm.PageNumber = 1;
+            }
+            vm.HandleRequest();
+
+            if (vm.IsValid)
+            {
+                TempData["Msg"] = vm.Msg;
+                // NOTE: Must clear the model state in order to bind
+                //       the @Html helpers to the new model values
+                ModelState.Clear();
+            }
+            else
+            {
+                foreach (KeyValuePair<string, string> item in vm.ValidationErrors)
+                {
+                    ModelState.AddModelError(item.Key, item.Value);
+                }
+            }
+            return View(vm);
+        }
     }
 }

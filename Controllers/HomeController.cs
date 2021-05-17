@@ -59,12 +59,12 @@ namespace HRViabilityPortal.Controllers
                 string[] resultsArray = explode("|", ss);
 
                 var t = resultsArray[0];
-               // var t = "true";
-              // Session["name"] = "Salihu Isa";
+                //var t = "true";
+                 //Session["name"] = "Salihu Isa";
 
-                  Session["name"] = resultsArray[1];
-                // Session["email"] = "Salihu.Isa@jaizbankplc.com";
-                  Session["email"] = resultsArray[2];
+                    Session["name"] = resultsArray[1];
+                 //Session["email"] = "Salihu.Isa@jaizbankplc.com";
+                    Session["email"] = resultsArray[2];
 
                     userid = model.UserName.Trim();
                     userName = model.UserName.Trim() + "@jaizbankplc.com";
@@ -270,7 +270,7 @@ namespace HRViabilityPortal.Controllers
 
                 //role = "UserHRV";
                 //Session["Role"] = "UserHRV";
-               // bool loggedon = true;
+                //bool loggedon = true;
 
                 string URL = ConfigurationManager.AppSettings["url"].ToString();
 

@@ -37,7 +37,7 @@
   </EntityType>
   <EntityType Name="BMDetail">
     <Key>
-      <PropertyRef Name="staffId" />
+      <PropertyRef Name="branchCode" />
     </Key>
     <Property Name="staffId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="staffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
